@@ -487,7 +487,7 @@ const store = {
 /* ---------- state ---------- */
 let DATA = { jobs: [], boards: [] };
 let TODAY = "";
-const st = { city: "", cat: "", org: "", edu: "", q: "", etc: false, pay: false, quick: null, day: null, sortKey: "deadline", sortDir: 1, open: null, view: "jobs" };
+const st = { city: "", cat: "", org: "", edu: "", q: "", etc: true, pay: false, quick: null, day: null, sortKey: "deadline", sortDir: 1, open: null, view: "jobs" };
 let starred = store.get("starred", {});
 let boardChecked = store.get("boardChecked", {});
 let NEW_SINCE = "";
@@ -896,7 +896,7 @@ function render() {
   ["cat", "org", "edu"].forEach(k => $("#f-" + k).classList.toggle("set", !!st[k]));
   const active = [st.city, st.cat, st.org, st.edu, st.q, st.pay, st.quick, st.day].filter(Boolean).length;
   $("#reset").hidden = !active;
-  const moreN = [st.cat, st.org, st.edu, st.pay, st.etc].filter(Boolean).length;
+  const moreN = [st.cat, st.org, st.edu, st.pay, !st.etc].filter(Boolean).length;
   $("#more-n").textContent = moreN ? ` ${moreN}` : "";
   clearTimeout(annT); annT = setTimeout(() => { $("#announce").textContent = `공고 ${list.length}건 표시`; }, 500);
   syncTabs();
@@ -963,7 +963,7 @@ function clearFilters() {
 }
 $("#f-city").addEventListener("change", e => { st.city = e.target.value; render(); });
 ["cat", "org", "edu"].forEach(k => $("#f-" + k).addEventListener("change", e => { st[k] = e.target.value; render(); }));
-$("#f-etc").addEventListener("change", e => { st.etc = e.target.checked; store.set("showEtc", st.etc); render(); });
+$("#f-etc").addEventListener("change", e => { st.etc = e.target.checked; store.set("showEtc2", st.etc); render(); });
 $("#f-pay").addEventListener("change", e => { st.pay = e.target.checked; render(); });
 let qT; $("#f-q").addEventListener("input", e => { clearTimeout(qT); qT = setTimeout(() => { st.q = e.target.value.trim(); render(); }, 150); });
 $("#reset").addEventListener("click", () => { clearFilters(); render(); });
@@ -1037,7 +1037,8 @@ async function load() {
   if (v && v.date === TODAY && v.since) NEW_SINCE = v.since;
   else if (v && v.date && v.date < TODAY) NEW_SINCE = v.date;
   else { const d = toDate(TODAY); d.setDate(d.getDate() - 3); NEW_SINCE = localISO(d); }
-  st.etc = !!store.get("showEtc", false); $("#f-etc").checked = st.etc;
+  // 기본은 행정·기타도 보여줌 (예전 showEtc 저장값은 무시)
+  st.etc = !!store.get("showEtc2", true); $("#f-etc").checked = st.etc;
   setStamp(); fillSelects(); render(); renderBoards();
   setTimeout(markVisit, 10000);
 }
