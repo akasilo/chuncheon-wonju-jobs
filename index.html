@@ -170,7 +170,7 @@ svg.i { width: 14px; height: 14px; flex: none; vertical-align: -2px; }
 /* ---------- table ---------- */
 .table-wrap { padding: 0 calc(var(--gut) - 12px) 8px; }
 table.jobs { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; }
-.jobs col.c-star { width: 40px; } .jobs col.c-due { width: 112px; } .jobs col.c-city { width: 58px; } .jobs col.c-cat { width: 82px; }
+.jobs col.c-star { width: 40px; } .jobs col.c-due { width: 132px; } .jobs col.c-city { width: 58px; } .jobs col.c-cat { width: 82px; }
 .jobs col.c-edu { width: 92px; } .jobs col.c-con { width: 78px; } .jobs col.c-start { width: 92px; } .jobs col.c-pay { width: 96px; } .jobs col.c-src { width: 150px; }
 .jobs th, .jobs td { padding: 0 12px; text-align: left; vertical-align: middle; }
 .jobs thead th { position: sticky; top: 0; z-index: 3; background: var(--sheet); height: 40px; border-bottom: 1px solid var(--rule-strong);
@@ -202,7 +202,8 @@ tr.grp b { color: var(--ink); font-weight: 600; margin-right: 6px; }
 .due.calm { padding: 0; color: var(--ink); font-weight: 500; }
 .due.open { padding: 0; color: var(--ink-3); font-weight: 500; }
 .due.past { padding: 0; color: var(--ink-3); text-decoration: line-through; font-weight: 400; }
-.ddate { display: block; margin-top: 3px; font-size: 12px; color: var(--ink-3); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ddate { display: block; margin-top: 3px; font-size: 12px; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-variant-numeric: tabular-nums; }
+.jobs td.c-due { overflow: hidden; }
 
 .ttl-line { display: flex; align-items: baseline; gap: 6px; min-width: 0; }
 .ttl { all: unset; cursor: pointer; font: 600 15px/1.4 var(--font-serif); color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; letter-spacing: -0.01em; }
@@ -237,7 +238,7 @@ tr.job:hover .ttl { text-decoration: underline; text-decoration-color: var(--rul
 .src .ext { font-size: 11px; font-weight: 600; letter-spacing: .02em; color: var(--ink-3); }
 
 /* ---------- expanded detail ---------- */
-tr.detail td { padding: 4px 12px 26px calc(40px + 112px + 12px); background: var(--open-wash); border-bottom: 1px solid var(--rule); }
+tr.detail td { padding: 4px 12px 26px calc(40px + 132px + 12px); background: var(--open-wash); border-bottom: 1px solid var(--rule); }
 /* 짧은 항목(학력·전공·경력·계약…)은 라벨 위·값 아래의 사양표, 긴 항목은 라벨 옆 한 줄 */
 .facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 16px 32px; margin: 0; max-width: 1240px; }
 .facts > div { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
@@ -291,15 +292,15 @@ tr.detail td { padding: 4px 12px 26px calc(40px + 112px + 12px); background: var
 
 /* ---------- wide screens: 넓은 모니터에서 열 간격·상세 패널도 넓게 ---------- */
 @media (min-width: 1600px) {
-  .jobs col.c-due { width: 128px; } .jobs col.c-city { width: 70px; } .jobs col.c-cat { width: 100px; }
+  .jobs col.c-due { width: 140px; } .jobs col.c-city { width: 70px; } .jobs col.c-cat { width: 100px; }
   .jobs col.c-edu { width: 110px; } .jobs col.c-con { width: 120px; } .jobs col.c-start { width: 112px; } .jobs col.c-pay { width: 120px; } .jobs col.c-src { width: 190px; }
-  tr.detail td { padding-left: calc(40px + 128px + 12px); }
+  tr.detail td { padding-left: calc(40px + 140px + 12px); }
 }
 
 /* ---------- mid widths ---------- */
 @media (max-width: 1180px) {
-  .jobs col.c-due { width: 100px; } .jobs col.c-src { width: 112px; }
-  tr.detail td { padding-left: calc(40px + 100px + 12px); }
+  .jobs col.c-due { width: 124px; } .jobs col.c-src { width: 112px; }
+  tr.detail td { padding-left: calc(40px + 124px + 12px); }
   .src { gap: 8px; } .src .att .k { display: none; }
 }
 
@@ -666,25 +667,37 @@ function renderRidge(list) {
 }
 
 /* ---------- rendering: table ---------- */
+// deadline_time 이 "2026-10-23 18:00 (이메일 도착분)" 처럼 문장으로 들어오는 경우가 있어
+// 표에는 시각(HH:MM)만 뽑아 쓴다. 접수 '시작' 시각이나 채용시 마감 문구는 버린다.
+function timeOnly(raw) {
+  const s = String(raw || "");
+  if (!s || /^채용\s*시/.test(s) || /접수\s*(시작|\d{4}-\d{2}-\d{2}\s*\d{1,2}시~)/.test(s)) return "";
+  let m = s.match(/(\d{1,2}):(\d{2})/);
+  if (m) return `${m[1].padStart(2, "0")}:${m[2]}`;
+  m = s.match(/(\d{1,2})\s*시(?!까지|작)/);
+  if (m) return `${m[1].padStart(2, "0")}:00`;
+  return /자정/.test(s) ? "24:00" : "";
+}
 function dueCell(j) {
-  const d = dday(j.deadline), t = det(j).deadline_time;
+  const d = dday(j.deadline), raw = det(j).deadline_time, t = timeOnly(raw);
   if (d === null) {
     const lab = j.deadline === "채용시" ? "채용 시 마감" : (j.deadline || "미정");
     return `<span class="due open" title="충원되면 일찍 마감될 수 있어요">${esc(lab)}</span>`;
   }
   const dt = toDate(j.deadline);
   const date = `${dt.getMonth() + 1}.${String(dt.getDate()).padStart(2, "0")} (${WD[dt.getDay()]})${t ? " " + esc(t) : ""}`;
-  if (d < 0) return `<span class="due past">마감</span><span class="ddate">${date}</span>`;
+  const tip = raw ? ` title="${esc(raw)}"` : "";
+  if (d < 0) return `<span class="due past">마감</span><span class="ddate"${tip}>${date}</span>`;
   const cls = d <= 3 ? "crit" : d <= 7 ? "warn" : "calm";
   const lab = d === 0 ? (t ? "오늘 " + esc(t) : "오늘 마감") : "D-" + d;
-  return `<span class="due ${cls}">${lab}</span><span class="ddate">${date}</span>`;
+  return `<span class="due ${cls}">${lab}</span><span class="ddate"${tip}>${date}</span>`;
 }
 function eduPill(j) {
   const e = det(j).education, r = eduRank(j);
   if (r < 0) return `<span class="dash" aria-label="학력 확인 전">—</span>`;
   return `<span class="edu e${r}">${esc(e)}</span>`;
 }
-const fileURL = f => "files/" +String(f).split("/").map(encodeURIComponent).join("/");
+const fileURL = f => "files/" + String(f).split("/").map(encodeURIComponent).join("/");
 const extOf = f => (String(f).match(/\.([a-z0-9]+)$/i) || [, ""])[1].toUpperCase();
 function srcCell(j) {
   const atts = det(j).attachments || [];
