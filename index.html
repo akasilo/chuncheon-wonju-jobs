@@ -78,17 +78,18 @@
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --plane: #171721;
-  --sheet: #1e1e2a;
-  --ink: #ededf3;
-  --ink-2: #c3c3cc;
-  --ink-3: #9898a6;
-  --rule: #303041;
-  --rule-soft: #282837;
-  --rule-strong: #44445a;
-  --week-band: #262636;
-  --hover-wash: #232331;
-  --open-wash: #242434;
+  /* 단계 간격을 벌려 띠(band) < 바탕(plane) < 공고판(sheet)이 서로 구분되게 */
+  --plane: #121219;
+  --sheet: #1f1f2c;
+  --ink: #f1f1f6;
+  --ink-2: #cdcdd7;
+  --ink-3: #a6a6b5;
+  --rule: #353548;
+  --rule-soft: #2a2a3a;
+  --rule-strong: #4a4a62;
+  --week-band: #2a2a3c;
+  --hover-wash: #262636;
+  --open-wash: #272739;
   --city-cc: #3a95d6;
   --city-wj: #cf6b98;
   --link: #a3b1f7;
@@ -99,7 +100,7 @@
   --lift: #34344a;
   --lift-shadow: 0 1px 2px rgba(0, 0, 0, .35);
   --sheet-shadow: none;
-  --band: #101017; --band-ink: #ededf3; --band-ink-2: #c3c3cc;
+  --band: #08080d; --band-ink: #ededf3; --band-ink-2: #c3c3cc;
   --due-crit-bg: #3B1F1D; --due-crit-fg: #FF8A7A;
   --due-warn-bg: #33290F; --due-warn-fg: #F0B24A; --due-warn-line: #6B5420;
   --star: #E8B04A;
@@ -319,7 +320,10 @@ tr.detail td { padding: 6px 12px 28px calc(40px + 132px + 12px); background: var
 .boards-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
 .boards-head h2 { font: 400 19px/1.35 var(--font-serif); margin: 0; }
 .boards-head p { margin: 0; font-size: 13px; color: var(--ink-2); }
-.bgrid { display: grid; grid-template-columns: 128px repeat(3, minmax(0, 1fr)); column-gap: 28px; }
+.bgrid { display: grid; grid-template-columns: 128px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.6fr); column-gap: 28px; }
+/* 공통(포털·정부) 칸처럼 링크가 많은 칸은 두 단으로 흘려서 한 칸만 길게 늘어지지 않게 */
+.blist:has(> li:nth-child(10)) { columns: 2 220px; column-gap: 24px; }
+.blist:has(> li:nth-child(10)) > li { break-inside: avoid; }
 .bgrid .colh { font-size: 12px; color: var(--ink-3); padding: 10px 0 6px; border-bottom: 1px solid var(--rule); }
 .bgroup { display: contents; }
 .bgroup > * { padding: 12px 0 14px; border-bottom: 1px solid var(--rule-soft); }
@@ -348,6 +352,18 @@ tr.detail td { padding: 6px 12px 28px calc(40px + 132px + 12px); background: var
   .jobs col.c-due { width: 140px; } .jobs col.c-city { width: 70px; } .jobs col.c-cat { width: 100px; }
   .jobs col.c-edu { width: 110px; } .jobs col.c-con { width: 120px; } .jobs col.c-start { width: 112px; } .jobs col.c-pay { width: 120px; } .jobs col.c-src { width: 190px; }
   tr.detail td { padding-left: calc(40px + 140px + 12px); }
+}
+
+/* ---------- very wide monitors: 여백 없이 채우고, 글자·간격을 화면 크기에 맞춰 키운다 ----------
+   .page 에만 zoom 을 걸어 화면 밖(.tip 툴팁)은 그대로 둔다. */
+@media (min-width: 1900px) {
+  .page { max-width: none; zoom: 1.12; }
+}
+@media (min-width: 2300px) {
+  .page { zoom: 1.3; }
+}
+@media (min-width: 3200px) {
+  .page { zoom: 1.6; }
 }
 
 /* ---------- mid widths ---------- */
