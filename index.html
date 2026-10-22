@@ -70,6 +70,8 @@
   --pill-strong-bg: #28253b; --pill-strong-fg: #FFFFFF;
   --edu-hi-bg: #dedefa;
   --focus: #5266eb;
+  --miss: #b4372f; --miss-bg: rgba(196, 50, 43, .08);
+  --scrim: rgba(23, 23, 33, .42);
 
   --font-sans: "Paperlogy", "Pretendard", "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
   --font-serif: var(--font-sans); /* 제목도 페이퍼로지로 통일 */
@@ -107,6 +109,8 @@
   --pill-strong-bg: #ededf3; --pill-strong-fg: #1e1e2a;
   --edu-hi-bg: rgba(156, 180, 232, .28);
   --focus: #a3b1f7;
+  --miss: #ff8a7a; --miss-bg: rgba(255, 138, 122, .12);
+  --scrim: rgba(0, 0, 0, .6);
 }
 
 * { box-sizing: border-box; }
@@ -138,14 +142,35 @@ svg.i { width: 14px; height: 14px; flex: none; vertical-align: -2px; }
 .top :focus-visible { outline-color: #a3b1f7; }
 
 .sheet { background: var(--sheet); border: 1px solid var(--rule-soft); border-radius: var(--r-sheet); box-shadow: var(--sheet-shadow); }
-.sheet + .sheet { margin-top: 24px; }
-#jobs-sheet { position: relative; margin-top: -52px; }
+/* 보기(공고·관심 / 지난 공고 / 게시판)는 한 번에 하나만: 보이는 sheet 가 밤색 띠 위로 올라온다 */
+.view-sheet { position: relative; margin-top: -52px; }
+body:not([data-view="jobs"]) #jobs-sheet,
+body:not([data-view="archive"]) #archive-sheet,
+body:not([data-view="boards"]) #boards-sheet { display: none; }
+
+/* ---------- view tabs: translucent capsule inside the night band ---------- */
+.views { display: inline-flex; gap: 2px; padding: 3px; margin: 0 auto 0 28px; border-radius: var(--r-btn); background: var(--glass); box-shadow: inset 0 0 0 1px var(--glass-line); }
+.views button { display: inline-flex; align-items: center; gap: 7px; min-height: 32px; padding: 0 15px; border: 0; border-radius: var(--r-btn); background: none; color: var(--band-ink-2); font-size: 13px; cursor: pointer; }
+.views button:hover { color: var(--band-ink); background: rgba(175, 178, 206, .16); }
+.views button[aria-selected="true"] { background: var(--band-ink); color: var(--band); font-weight: 500; }
+.views .n { font-size: 12px; font-weight: 400; font-variant-numeric: tabular-nums; opacity: .72; }
+.views .n:empty { display: none; }
 
 /* ---------- lead ---------- */
 .lead { padding: 30px var(--gut) 0; }
 .lead h2 { font: 300 26px/1.42 var(--font-serif); margin: 0; letter-spacing: 0; text-wrap: balance; max-width: 34em; color: var(--ink); }
 .lead .sub { margin: 8px 0 0; color: var(--ink-2); font-size: 13px; display: flex; flex-wrap: wrap; gap: 4px 16px; }
 .lead .sub button { background: none; border: 0; padding: 0; color: var(--link); cursor: pointer; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
+.lead .sub .hint { color: var(--ink-2); }
+.lead .sub .hint button + button { margin-left: 10px; color: var(--ink-3); }
+.lead-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px 32px; flex-wrap: wrap; }
+.tools { display: flex; flex-wrap: wrap; gap: 8px; flex: none; padding-top: 2px; }
+.tool { display: inline-flex; align-items: center; gap: 7px; min-height: 36px; padding: 0 16px 0 14px; border: 0; border-radius: var(--r-btn);
+  background: var(--tint); color: var(--ink); font-size: 14px; cursor: pointer; white-space: nowrap; }
+.tool:hover { background: var(--tint-hover); }
+.tool svg { color: var(--ink-2); }
+.tool .v { color: var(--ink-2); font-size: 13px; }
+.tool.set { background: var(--accent-tint); }
 
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
 .chip { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 16px 0 14px; border: 0; border-radius: var(--r-chip);
@@ -155,6 +180,7 @@ svg.i { width: 14px; height: 14px; flex: none; vertical-align: -2px; }
 .chip .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-3); }
 .chip .dot.crit { background: #C4322B; } .chip .dot.warn { background: #D08A1E; }
 .chip svg { width: 13px; height: 13px; color: var(--star); }
+.chip svg.u { color: var(--ink-2); }
 .chip[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
 .chip[aria-pressed="true"] .n, .chip[aria-pressed="true"] svg { color: currentColor; }
 .chip[aria-pressed="true"] .dot { box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .85); }
@@ -277,6 +303,15 @@ tr.job:hover .ttl { text-decoration: underline; text-decoration-color: var(--rul
 .edu.e4 { background: var(--edu-hi-bg); color: var(--ink); font-weight: 500; }
 .edu.e0 { background: none; padding: 0; color: var(--ink-3); }
 .dash { color: var(--ink-3); }
+/* 내 조건: 학력 칸 안에서만 표시 (새 열을 만들지 않는다) */
+.fit { position: relative; display: inline-flex; vertical-align: middle; }
+.fit .mk { position: absolute; top: -5px; right: -6px; width: 12px; height: 12px; border-radius: 50%; background: var(--sheet); color: var(--accent); }
+.fit .mk svg { display: block; width: 12px; height: 12px; }
+.edu.miss { background: none; box-shadow: inset 0 0 0 1px var(--rule); color: var(--ink-3); font-weight: 400; text-decoration: line-through; text-decoration-color: var(--ink-3); }
+.org .kw { color: var(--link); font-size: 12px; margin-left: 10px; }
+.org .gap { color: var(--miss); font-size: 12px; margin-left: 10px; }
+.m-meta .kw { color: var(--link); font-size: 12px; }
+.m-meta .gap { color: var(--miss); font-size: 12px; }
 
 .pay { font-size: 14px; font-weight: 500; color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .pay-sub { display: block; font-size: 12px; font-weight: 400; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -306,6 +341,100 @@ tr.detail td { padding: 6px 12px 28px calc(40px + 132px + 12px); background: var
 .facts .lead-sum { font: 400 15px/1.55 var(--font-serif); }
 .facts .ext { font-size: 12px; color: var(--ink-3); margin-left: 4px; }
 .pending { margin: 0 0 14px; font-size: 13px; color: var(--ink-3); }
+.facts dd ul.cmp { gap: 6px 22px; align-items: baseline; }
+.cmp li { display: inline-flex; align-items: baseline; gap: 6px; }
+.cmp .k { color: var(--ink-3); font-size: 13px; }
+.cmp b { font-weight: 500; }
+.cmp b.no { color: var(--miss); }
+.cmp b.unk { color: var(--ink-3); font-weight: 400; }
+.cmp .muted { font-size: 13px; }
+.verdict { display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: var(--r-badge); font-size: 12px; font-weight: 500; background: var(--accent-tint); color: var(--link); }
+.verdict.no { background: var(--miss-bg); color: var(--miss); }
+
+/* ---------- dialogs (캘린더 구독, 내 조건) ---------- */
+dialog.dlg { width: min(580px, calc(100vw - 32px)); max-height: calc(100dvh - 48px); padding: 0; border: 1px solid var(--rule-soft); border-radius: var(--r-sheet);
+  background: var(--sheet); color: var(--ink); box-shadow: 0 2px 4px rgba(23, 23, 33, .06), 0 28px 64px -28px rgba(23, 23, 33, .5); overflow: auto; overscroll-behavior: contain; }
+dialog.dlg::backdrop { background: var(--scrim); }
+.dlg-in { padding: 24px 28px 26px; }
+.dlg-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.dlg h2 { font: 400 19px/1.4 var(--font-sans); margin: 0; }
+.dlg .x { width: 36px; height: 36px; border: 0; border-radius: 50%; background: var(--tint); color: var(--ink-2); display: grid; place-items: center; cursor: pointer; flex: none; margin: -4px -8px 0 0; }
+.dlg .x:hover { background: var(--tint-hover); color: var(--ink); }
+.dlg .lede { margin: 6px 0 0; font-size: 14px; color: var(--ink-2); }
+.dlg .note { margin: 14px 0 0; font-size: 13px; color: var(--ink-3); }
+.dlg .note.home { color: var(--ink-2); padding: 12px 14px; border-radius: 10px; background: var(--week-band); }
+.dlg .note.home code { font: inherit; color: var(--ink); word-break: break-all; }
+.feeds { display: grid; gap: 10px; margin-top: 18px; }
+.feed { padding: 14px 16px 14px; border-radius: 12px; background: var(--tint); }
+.feed h3 { margin: 0; font: 500 15px/1.4 var(--font-sans); }
+.feed h3 span { margin-left: 8px; font-weight: 400; font-size: 13px; color: var(--ink-2); }
+.feed .url { display: block; width: 100%; margin: 8px 0 10px; padding: 0 12px; min-height: 34px; border: 1px solid var(--rule); border-radius: 8px; background: var(--sheet);
+  font-size: 12px; color: var(--ink-2); text-overflow: ellipsis; }
+.acts { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.btn-s { display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 0 14px; border: 0; border-radius: var(--r-btn); background: var(--lift); box-shadow: var(--lift-shadow);
+  color: var(--ink); font-size: 13px; cursor: pointer; text-decoration: none; white-space: nowrap; }
+.btn-s:hover { color: var(--link); }
+.btn-s.ok { color: var(--link); }
+.steps { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; margin-top: 20px; }
+.steps h3 { margin: 0 0 4px; font: 500 14px/1.4 var(--font-sans); }
+.steps ol { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.65; color: var(--ink-2); }
+.btn-p { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 22px; border: 0; border-radius: var(--r-btn); background: var(--accent); color: var(--on-accent); font-size: 14px; font-weight: 500; cursor: pointer; }
+.btn-p:hover { background: #4558da; }
+.btn-t { background: none; border: 0; padding: 0 4px; min-height: 40px; color: var(--ink-2); font-size: 13px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.pf { display: grid; gap: 16px; margin-top: 18px; }
+.pf .f, .pf fieldset { display: grid; gap: 6px; margin: 0; padding: 0; border: 0; min-width: 0; font-size: 13px; color: var(--ink-2); }
+.pf legend { padding: 0; margin-bottom: 6px; }
+.pf .f small { font-size: 12px; color: var(--ink-3); }
+.pf input[type="text"], .pf input[type="number"], .pf select { width: 100%; min-height: 40px; padding: 0 14px; border: 1px solid var(--rule); border-radius: 10px; background: var(--sheet); color: var(--ink); font-size: 15px; }
+.pf input:focus, .pf select:focus { border-color: var(--rule-strong); }
+.pf .two { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px; }
+.pf .yrs { position: relative; }
+.pf .yrs input { padding-right: 40px; }
+.pf .yrs span { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--ink-3); font-size: 14px; pointer-events: none; }
+.pf .checks { display: flex; flex-wrap: wrap; gap: 8px; }
+.pf .checks label { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 16px 0 12px; border-radius: var(--r-btn); background: var(--tint); color: var(--ink); font-size: 14px; cursor: pointer; }
+.pf .checks label:has(input:checked) { background: var(--accent-tint); }
+.pf .checks input { width: 16px; height: 16px; margin: 0; accent-color: var(--accent); }
+.dlg-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 22px; }
+
+/* ---------- archive (지난 공고) ---------- */
+.arch { padding: 28px var(--gut) 32px; }
+.arch-head { display: flex; align-items: baseline; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; }
+.arch-head h2 { font: 400 19px/1.35 var(--font-serif); margin: 0; }
+.arch-head p { margin: 0; font-size: 13px; color: var(--ink-2); }
+.arch h3 { font: 500 15px/1.4 var(--font-sans); margin: 26px 0 2px; }
+.arch h3 + p { margin: 0 0 10px; font-size: 13px; color: var(--ink-3); }
+table.orgt, table.atab { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; }
+.orgt th, .atab th { height: 36px; padding: 0 12px; text-align: left; font-size: 12px; font-weight: 400; color: var(--ink-2); border-bottom: 1px solid var(--rule); white-space: nowrap; }
+.orgt td, .atab td { padding: 9px 12px; border-bottom: 1px solid var(--rule-soft); vertical-align: middle; font-size: 13px; }
+.orgt col.o-n { width: 64px; } .orgt col.o-m { width: 222px; } .orgt col.o-pk { width: 120px; } .orgt col.o-last { width: 112px; }
+.orgt .on { all: unset; cursor: pointer; font-size: 14px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 100%; }
+.orgt .on:hover { text-decoration: underline; text-decoration-color: var(--rule-strong); text-underline-offset: 4px; }
+.orgt .on:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 3px; }
+.orgt .ot { display: block; font-size: 12px; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.orgt .ot .live { color: var(--link); }
+.orgt .cnt { font-size: 15px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.mstrip { display: grid; grid-template-columns: repeat(12, 13px); gap: 3px; align-items: end; }
+.mstrip i { height: 13px; border-radius: 3px; background: var(--tint); }
+.mstrip i.l1 { background: color-mix(in srgb, var(--ink-2) 32%, transparent); }
+.mstrip i.l2 { background: color-mix(in srgb, var(--ink-2) 62%, transparent); }
+.mstrip i.l3 { background: var(--ink-2); }
+.mstrip i.now { box-shadow: 0 0 0 1px var(--rule-strong); }
+.mhead { display: grid; grid-template-columns: repeat(12, 13px); gap: 3px; font-size: 11px; color: var(--ink-3); }
+.mhead span { text-align: center; overflow: visible; white-space: nowrap; }
+.orgs-more { margin-top: 10px; }
+.m-peak { display: none; }
+.afil { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 0 0 6px; }
+.atab col.a-due { width: 96px; } .atab col.a-city { width: 70px; } .atab col.a-edu { width: 110px; } .atab col.a-src { width: 80px; }
+.atab .t { font-size: 14px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.atab .o { font-size: 12px; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
+.atab .d { color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.atab .d small { display: block; font-size: 12px; color: var(--ink-3); }
+.atab a { text-decoration: none; display: inline-flex; align-items: center; gap: 3px; }
+.atab a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.arch .empty { padding: 40px 0 24px; text-align: left; max-width: 34em; }
+.arch .empty strong { display: block; font: 400 19px/1.45 var(--font-sans); color: var(--ink); margin-bottom: 8px; }
+.arch .more-row td { text-align: center; border-bottom: 0; padding-top: 14px; }
 
 .empty, .state { padding: 48px var(--gut); text-align: center; color: var(--ink-2); }
 .empty p, .state p { margin: 0 0 14px; }
@@ -344,7 +473,11 @@ tr.detail td { padding: 6px 12px 28px calc(40px + 132px + 12px); background: var
 @media (prefers-reduced-motion: no-preference) {
   tr.detail td > * { animation: reveal .16s ease-out; }
   @keyframes reveal { from { opacity: 0; transform: translateY(-3px); } }
-  .chip, .star, .day, .seg label, .sel select, .tog input, .tog input::after { transition: background-color .12s, color .12s, box-shadow .12s, left .12s; }
+  .chip, .star, .day, .seg label, .sel select, .tog input, .tog input::after, .views button, .tool { transition: background-color .12s, color .12s, box-shadow .12s, left .12s; }
+  dialog.dlg[open] { animation: dlg-in .18s ease-out; }
+  dialog.dlg[open]::backdrop { animation: fade .18s ease-out; }
+  @keyframes dlg-in { from { opacity: 0; transform: translateY(6px) scale(.99); } }
+  @keyframes fade { from { opacity: 0; } }
 }
 
 /* ---------- wide screens: 넓은 모니터에서 열 간격·상세 패널도 넓게 ---------- */
@@ -379,13 +512,40 @@ tr.detail td { padding: 6px 12px 28px calc(40px + 132px + 12px); background: var
   body { font-size: 15px; padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
   .page { padding: 0 0 24px; }
   .top { padding: 14px 16px 14px; }
-  #jobs-sheet { margin-top: 0; }
+  .views { display: none; }
+  .view-sheet { margin-top: 0; }
+  .tools { width: 100%; }
+  .tool { min-height: 44px; flex: 1 1 0; justify-content: center; }
+  .dlg-in { padding: 20px 18px 22px; }
+  .steps { grid-template-columns: 1fr; }
+  .btn-s { min-height: 44px; }
+  .pf .two { grid-template-columns: 1fr; }
+  .pf input[type="text"], .pf input[type="number"], .pf select { min-height: 44px; font-size: 16px; }
+  .pf .checks label, .btn-p, .btn-t { min-height: 44px; }
+  .arch { padding: 20px var(--gut) 24px; }
+  .orgt thead, .atab thead, .orgt colgroup, .atab colgroup { display: none; }
+  .orgt, .orgt tbody, .atab, .atab tbody { display: block; }
+  .orgt tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; padding: 12px 0; border-bottom: 1px solid var(--rule-soft); }
+  .orgt td { padding: 0; border: 0; }
+  .orgt td.c-n { text-align: right; }
+  .orgt td.c-m { grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); }
+  .orgt td.c-pk, .orgt td.c-last { display: none; }
+  .m-peak { display: inline; }
+  .orgt .on { min-height: 32px; display: flex; align-items: center; }
+  .atab tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 12px 0; border-bottom: 1px solid var(--rule-soft); }
+  .atab td { padding: 0; border: 0; }
+  .atab td.a-t { grid-column: 1; grid-row: 1; }
+  .atab td.a-due { grid-column: 2; grid-row: 1; text-align: right; }
+  .atab td.a-city, .atab td.a-edu { display: none; }
+  .atab td.a-src { grid-column: 1 / -1; }
+  .atab td.a-src a { min-height: 32px; }
+  .atab .t { white-space: normal; }
+  .arch .more-row { display: block; }
+  .arch .more-row td { display: block; }
   .brand { flex-direction: column; gap: 0; }
   .brand h1 { font-size: 19px; }
   .stamp { font-size: 12px; }
-  .top-actions .to-boards { display: none; }
   .sheet { border-radius: 0; border-left: 0; border-right: 0; border-top: 0; box-shadow: none; }
-  .sheet + .sheet { margin-top: 0; }
   .lead { padding-top: 20px; }
   .lead h2 { font-size: 19px; font-weight: 400; line-height: 1.5; }
   .chips { gap: 6px; margin: 16px calc(-1 * var(--gut)) 0; padding: 0 var(--gut) 2px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
@@ -444,9 +604,7 @@ tr.detail td { padding: 6px 12px 28px calc(40px + 132px + 12px); background: var
   .blist a { min-height: 40px; align-items: center; font-size: 15px; }
   .blist a .ok { margin-top: 0; }
 
-  body[data-view="boards"] #jobs-sheet { display: none; }
-  body:not([data-view="boards"]) #boards-sheet { display: none; }
-  .tabbar { display: grid; grid-template-columns: repeat(3, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+  .tabbar { display: grid; grid-template-columns: repeat(4, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
     background: var(--sheet); border-top: 1px solid var(--rule); padding-bottom: env(safe-area-inset-bottom); }
   .tabbar button { position: relative; min-height: 56px; border: 0; background: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
     font-size: 12px; color: var(--ink-3); cursor: pointer; }
@@ -470,6 +628,10 @@ tr.detail td { padding: 6px 12px 28px calc(40px + 132px + 12px); background: var
   <symbol id="i-check" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M5.2 8.2l2 2 3.6-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-list" viewBox="0 0 20 20"><path d="M3 5h14M3 10h14M3 15h9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
   <symbol id="i-board" viewBox="0 0 20 20"><rect x="3" y="3" width="14" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 8h14M8 8v9" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 16 16"><rect x="2.2" y="3" width="11.6" height="10.8" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.2 6.6h11.6M5.4 1.6v2.6M10.6 1.6v2.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-user" viewBox="0 0 16 16"><circle cx="8" cy="5.4" r="2.8" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.8 14c.6-2.7 2.6-4.2 5.2-4.2s4.6 1.5 5.2 4.2" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-archive" viewBox="0 0 20 20"><rect x="2.8" y="3.5" width="14.4" height="4" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4.2 7.5v7.3a1.2 1.2 0 0 0 1.2 1.2h9.2a1.2 1.2 0 0 0 1.2-1.2V7.5M8 11h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
   <symbol id="i-filter" viewBox="0 0 16 16"><path d="M2.5 4h11M4.5 8h7M6.5 12h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
 </svg>
 
@@ -479,16 +641,27 @@ tr.detail td { padding: 6px 12px 28px calc(40px + 132px + 12px); background: var
       <h1>춘천·원주 채용</h1>
       <span class="stamp" id="stamp"></span>
     </div>
+    <div class="views" role="tablist" aria-label="보기 전환" id="views">
+      <button type="button" role="tab" id="tab-jobs" data-tab="jobs" aria-controls="jobs-sheet" aria-selected="true">공고<span class="n" id="vn-jobs"></span></button>
+      <button type="button" role="tab" id="tab-starred" data-tab="starred" aria-controls="jobs-sheet" aria-selected="false" tabindex="-1">관심<span class="n" id="vn-starred"></span></button>
+      <button type="button" role="tab" id="tab-archive" data-tab="archive" aria-controls="archive-sheet" aria-selected="false" tabindex="-1">지난 공고<span class="n" id="vn-archive"></span></button>
+      <button type="button" role="tab" id="tab-boards" data-tab="boards" aria-controls="boards-sheet" aria-selected="false" tabindex="-1">게시판</button>
+    </div>
     <div class="top-actions">
-      <a class="ghost to-boards" href="#boards-sheet" id="to-boards">채용 게시판</a>
       <button class="ghost" type="button" id="theme" aria-pressed="false"><svg class="i"><use href="#i-moon"/></svg><span>어둡게</span></button>
     </div>
   </header>
 
   <main>
-    <section class="sheet" id="jobs-sheet" aria-labelledby="lead-h">
+    <section class="sheet view-sheet" id="jobs-sheet" role="tabpanel" aria-labelledby="lead-h">
       <div class="lead">
-        <h2 id="lead-h">공고를 불러오는 중이에요.</h2>
+        <div class="lead-top">
+          <h2 id="lead-h">공고를 불러오는 중이에요.</h2>
+          <div class="tools">
+            <button type="button" class="tool" id="open-profile" aria-haspopup="dialog"><svg class="i" aria-hidden="true"><use href="#i-user"/></svg>내 조건</button>
+            <button type="button" class="tool" id="open-cal" aria-haspopup="dialog"><svg class="i" aria-hidden="true"><use href="#i-cal"/></svg>캘린더 구독</button>
+          </div>
+        </div>
         <p class="sub" id="lead-sub"></p>
         <div class="chips" id="chips" role="group" aria-label="빠른 보기"></div>
         <div class="ridge" id="ridge" hidden></div>
@@ -525,13 +698,23 @@ tr.detail td { padding: 6px 12px 28px calc(40px + 132px + 12px); background: var
       <p class="vh" aria-live="polite" id="announce"></p>
     </section>
 
-    <section class="sheet" id="boards-sheet" aria-labelledby="boards-h">
+    <section class="sheet view-sheet" id="archive-sheet" role="tabpanel" aria-labelledby="arch-h">
+      <div class="arch">
+        <div class="arch-head">
+          <h2 id="arch-h">지난 공고</h2>
+          <p id="arch-sub"></p>
+        </div>
+        <div id="arch-body"></div>
+      </div>
+    </section>
+
+    <section class="sheet view-sheet" id="boards-sheet" role="tabpanel" aria-labelledby="boards-h">
       <div class="boards">
         <div class="boards-head">
           <h2 id="boards-h">매일 볼 채용 게시판</h2>
           <p id="boards-sub"></p>
         </div>
-        <div id="boards"></div>
+        <div id="boards-grid"></div>
       </div>
     </section>
   </main>
@@ -539,9 +722,88 @@ tr.detail td { padding: 6px 12px 28px calc(40px + 132px + 12px); background: var
 
 <nav class="tabbar" aria-label="보기 전환">
   <button type="button" data-tab="jobs" aria-current="page"><svg aria-hidden="true"><use href="#i-list"/></svg>공고</button>
-  <button type="button" data-tab="star"><svg aria-hidden="true"><use href="#i-star"/></svg>관심</button>
+  <button type="button" data-tab="starred"><svg aria-hidden="true"><use href="#i-star"/></svg>관심</button>
+  <button type="button" data-tab="archive"><svg aria-hidden="true"><use href="#i-archive"/></svg>지난 공고</button>
   <button type="button" data-tab="boards"><svg aria-hidden="true"><use href="#i-board"/></svg>게시판</button>
 </nav>
+
+<dialog class="dlg" id="cal-dlg" aria-labelledby="cal-h">
+  <div class="dlg-in">
+    <div class="dlg-head">
+      <div>
+        <h2 id="cal-h">마감일을 캘린더로 받기</h2>
+        <p class="lede">공고 마감일이 내 캘린더에 종일 일정으로 들어와요. 한 번 구독하면 새 공고도 저절로 채워져요.</p>
+      </div>
+      <form method="dialog"><button class="x" aria-label="닫기"><svg class="i" aria-hidden="true"><use href="#i-close"/></svg></button></form>
+    </div>
+    <div class="feeds" id="feeds"></div>
+    <p class="note home" id="cal-home" hidden></p>
+    <div class="steps">
+      <div>
+        <h3>구글 캘린더</h3>
+        <ol>
+          <li>위에서 <b>주소 복사</b>를 눌러요.</li>
+          <li>PC 구글 캘린더에서 설정 → 캘린더 추가 → URL로 추가로 가요.</li>
+          <li>주소를 붙여넣고 캘린더 추가를 눌러요.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>iPhone·Mac</h3>
+        <ol id="cal-apple">
+          <li><b>webcal로 열기</b>를 눌러요.</li>
+          <li>구독을 누르면 캘린더 앱에 추가돼요.</li>
+        </ol>
+      </div>
+    </div>
+    <p class="vh" role="status" id="cal-live"></p>
+    <p class="note">사이트가 갱신될 때(평일 저녁) 캘린더도 함께 바뀌어요. 구글 캘린더는 반영까지 몇 시간 걸릴 수 있어요.</p>
+  </div>
+</dialog>
+
+<dialog class="dlg" id="pf-dlg" aria-labelledby="pf-h">
+  <form class="dlg-in" id="pf-form" method="dialog">
+    <div class="dlg-head">
+      <div>
+        <h2 id="pf-h">내 조건</h2>
+        <p class="lede">학력·경력 요건을 내 조건과 비교해서 지원할 수 있는 공고를 표시해요. 이 기기에만 저장돼요.</p>
+      </div>
+      <button type="button" class="x" id="pf-x" aria-label="닫기"><svg class="i" aria-hidden="true"><use href="#i-close"/></svg></button>
+    </div>
+    <div class="pf">
+      <div class="two">
+        <label class="f">최종 학위
+          <select id="pf-deg" autofocus>
+            <option value="">선택 안 함</option>
+            <option value="박사">박사</option>
+            <option value="박사 수료">박사 수료 (석사로 비교)</option>
+            <option value="석사">석사</option>
+            <option value="학사">학사</option>
+            <option value="전문학사">전문학사</option>
+            <option value="고졸">고졸</option>
+          </select>
+        </label>
+        <label class="f">경력
+          <span class="yrs"><input type="number" id="pf-yrs" min="0" max="50" step="0.5" inputmode="decimal" placeholder="0"><span aria-hidden="true">년</span></span>
+        </label>
+      </div>
+      <label class="f">전공·관심 키워드
+        <input type="text" id="pf-kw" placeholder="통계, 보건, 데이터, 의료AI" autocomplete="off" spellcheck="false">
+        <small>쉼표로 나눠 적어요. 공고명·전공·업무·우대 사항에서 찾아요.</small>
+      </label>
+      <fieldset>
+        <legend>희망 지역</legend>
+        <div class="checks">
+          <label><input type="checkbox" name="pf-city" value="춘천">춘천</label>
+          <label><input type="checkbox" name="pf-city" value="원주">원주</label>
+        </div>
+      </fieldset>
+    </div>
+    <div class="dlg-foot">
+      <button type="button" class="btn-t" id="pf-clear">조건 지우기</button>
+      <button type="submit" class="btn-p" id="pf-save">저장</button>
+    </div>
+  </form>
+</dialog>
 <div class="tip" id="tip" hidden></div>
 
 <script>
@@ -634,6 +896,60 @@ const isNew = j => NEW_SINCE && isoDate(j.posted_date) && j.posted_date > NEW_SI
 const isOpen = j => { const d = dday(j.deadline); return d === null || d >= 0; };
 const catOf = j => j.category || "기타";
 
+/* ---------- 내 조건 (profile matching, all client-side) ---------- */
+// 박사 수료는 요건 비교에서 석사로 본다
+const DEG_RANK = { "박사": 5, "박사 수료": 4, "석사": 4, "학사": 3, "전문학사": 2, "고졸": 1 };
+const REQ_LABEL = { 5: "박사", 4: "석사 이상", 3: "학사 이상", 2: "전문학사 이상", 1: "고졸 이상", 0: "무관" };
+function cleanProfile(p) {
+  if (!p || typeof p !== "object") return null;
+  const out = {
+    degree: DEG_RANK[p.degree] ? p.degree : "",
+    keywords: (Array.isArray(p.keywords) ? p.keywords : []).map(s => String(s).trim()).filter(Boolean).slice(0, 20),
+    years: typeof p.years === "number" && p.years >= 0 ? p.years : null,
+    cities: (Array.isArray(p.cities) ? p.cities : []).filter(c => c === "춘천" || c === "원주"),
+  };
+  return out.degree || out.keywords.length || out.years != null || out.cities.length ? out : null;
+}
+let profile = cleanProfile(store.get("profile", null));
+let fitCache = new Map();
+// "경력 3년 이상" → 3, "신입 가능"/"무관" → 0, 그 밖은 null(확인 필요)
+function expNeed(raw) {
+  const s = val(raw).trim();
+  if (!s) return null;
+  if (/^(무관|신입)/.test(s) || /경력\s*무관|신입\s*(가능|지원)|(연수|년수)\s*무관/.test(s)) return 0;
+  const m = s.match(/(\d+(?:\.\d+)?)\s*년\s*이상/);
+  return m ? parseFloat(m[1]) : null;
+}
+function fitOf(j) {
+  if (!profile) return null;
+  if (fitCache.has(j)) return fitCache.get(j);
+  const d = det(j), p = profile, f = { edu: null, exp: null, kw: [], kwSet: p.keywords.length > 0, cityOk: null };
+  if (p.degree) {
+    const r = eduRank(j);
+    f.edu = r < 0 ? "unk" : DEG_RANK[p.degree] >= r ? "ok" : "no";
+    f.eduReq = r;
+  }
+  if (p.years != null) {
+    const need = expNeed(d.experience);
+    f.exp = need == null ? "unk" : p.years >= need ? "ok" : "no";
+    f.expNeed = need;
+  }
+  if (f.kwSet) {
+    const hay = [j.title, val(d.major), val(d.summary), val(d.preferred), j.requirements].join(" ").toLowerCase();
+    f.kw = p.keywords.filter(k => hay.includes(k.toLowerCase()));
+  }
+  if (p.cities.length) f.cityOk = p.cities.includes(j.city);
+  f.fail = f.edu === "no" || f.exp === "no";
+  fitCache.set(j, f);
+  return f;
+}
+const kwHit = j => { const f = fitOf(j); return f && f.kw.length ? 1 : 0; };
+function setProfile(p) {
+  profile = cleanProfile(p); fitCache = new Map();
+  try { profile ? localStorage.setItem("profile", JSON.stringify(profile)) : localStorage.removeItem("profile"); } catch (e) {}
+  if (!profile && st.quick === "fit") st.quick = null;
+}
+
 /* ---------- pools & filtering ---------- */
 function basePool() { return DATA.jobs.filter(j => isOpen(j) && (st.etc || catOf(j) !== "기타" || st.cat === "기타")); }
 const QUICK = {
@@ -641,6 +957,8 @@ const QUICK = {
   soon: j => { const d = dday(j.deadline); return d !== null && d >= 0 && d <= 3; },
   master: j => eduRank(j) >= 4,
   star: j => !!starred[keyOf(j)],
+  // 나에게 맞는 공고: 학력·경력에서 걸리지 않고, 키워드를 넣었다면 하나 이상 일치, 희망 지역을 골랐다면 그 지역
+  fit: j => { const f = fitOf(j); return !!f && !f.fail && (!f.kwSet || f.kw.length > 0) && f.cityOk !== false; },
 };
 function matches(j, skipDay) {
   if (st.city && j.city !== st.city) return false;
@@ -666,6 +984,11 @@ function matches(j, skipDay) {
 function sorted(list) {
   const k = st.sortKey, dir = st.sortDir;
   const val = j => k === "deadline" ? dday(j.deadline) : k === "pay" ? payInfo(j).monthly : k === "start" ? startInfo(j).t : (eduRank(j) < 0 ? null : eduRank(j));
+  // 마감순(묶음 보기)일 때: 같은 마감 묶음 안에서 내 키워드와 맞는 공고를 위로
+  if (k === "deadline" && dir > 0 && profile && profile.keywords.length) {
+    const gi = j => GROUPS.indexOf(groupOf(j));
+    return list.slice().sort((a, b) => gi(a) - gi(b) || kwHit(b) - kwHit(a) || tiebreak(a, b));
+  }
   return list.slice().sort((a, b) => {
     const va = val(a), vb = val(b);
     if (va == null && vb == null) return tiebreak(a, b);
@@ -675,7 +998,7 @@ function sorted(list) {
 }
 function tiebreak(a, b) {
   const da = dday(a.deadline), db = dday(b.deadline);
-  return (da ?? 9999) - (db ?? 9999) || String(a.org).localeCompare(String(b.org), "ko");
+  return (da ?? 9999) - (db ?? 9999) || kwHit(b) - kwHit(a) || String(a.org).localeCompare(String(b.org), "ko");
 }
 
 /* ---------- rendering: lead ---------- */
@@ -692,13 +1015,16 @@ function renderLead() {
   const cc = pool.filter(j => j.city === "춘천").length, wj = pool.filter(j => j.city === "원주").length;
   $("#lead-sub").innerHTML = `<span>춘천 ${cc}건, 원주 ${wj}건</span>`
     + (fresh ? `<span>새 공고 ${fresh}건</span>` : "")
-    + (hiddenEtc ? `<span>행정·기타 ${hiddenEtc}건은 숨겼어요 <button type="button" id="show-etc">보기</button></span>` : "");
+    + (hiddenEtc ? `<span>행정·기타 ${hiddenEtc}건은 숨겼어요 <button type="button" id="show-etc">보기</button></span>` : "")
+    + (!profile && !store.get("profileHint", false) ? `<span class="hint">학력·경력을 넣으면 지원할 수 있는 공고를 표시해요 <button type="button" data-act="profile">내 조건 넣기</button><button type="button" data-act="hint-off">닫기</button></span>` : "");
   const se = $("#show-etc"); if (se) se.onclick = () => { $("#f-etc").checked = true; st.etc = true; render(); };
+  renderProfileTool();
 
   const chips = [
     ["today", "오늘 마감", pool.filter(QUICK.today).length, `<i class="dot crit" aria-hidden="true"></i>`],
     ["soon", "3일 안에", pool.filter(QUICK.soon).length, `<i class="dot warn" aria-hidden="true"></i>`],
     ["master", "석사 이상 요구", pool.filter(QUICK.master).length, ""],
+    ...(profile ? [["fit", "나에게 맞는 공고", pool.filter(QUICK.fit).length, icon("i-user", "u")]] : []),
     ["star", "관심", DATA.jobs.filter(QUICK.star).length, icon("i-star-f", "")],
   ];
   $("#chips").innerHTML = chips.map(([k, l, n, pre]) =>
@@ -771,6 +1097,23 @@ function eduPill(j) {
   if (r < 0) return `<span class="dash" aria-label="학력 확인 전">—</span>`;
   return `<span class="edu e${r}">${esc(e)}</span>`;
 }
+// 표·모바일 메타용: 내 학력으로 충족이면 작은 체크, 미달이면 흐린 취소선
+function eduFit(j) {
+  const f = fitOf(j);
+  if (!f || !f.edu || f.edu === "unk") return eduPill(j);
+  const e = det(j).education, r = eduRank(j);
+  if (f.edu === "no") return `<span class="edu e${r} miss" title="내 학력으로는 요건 미달">${esc(e)}<span class="vh">, 내 학력 미달</span></span>`;
+  return `<span class="fit" title="내 학력으로 충족">${eduPill(j)}<span class="mk" aria-hidden="true">${icon("i-check", "")}</span><span class="vh">, 내 학력 충족</span></span>`;
+}
+// 제목 둘째 줄: 일치한 키워드, 경력 미달
+function fitLine(j) {
+  const f = fitOf(j);
+  if (!f) return "";
+  let h = "";
+  if (f.kw.length) h += `<span class="kw" title="내 관심 키워드와 일치"><span class="vh">관심 키워드 일치: </span>${esc(f.kw.join(", "))}</span>`;
+  if (f.exp === "no") h += `<span class="gap">경력 ${f.expNeed}년 이상</span>`;
+  return h;
+}
 const fileURL = f => "files/" + String(f).split("/").map(encodeURIComponent).join("/");
 const extOf = f => (String(f).match(/\.([a-z0-9]+)$/i) || [, ""])[1].toUpperCase();
 function srcCell(j) {
@@ -806,12 +1149,12 @@ function rowHTML(j) {
     <td class="c-due">${dueCell(j)}</td>
     <td class="c-title">
       <div class="ttl-line">${isNew(j) ? `<span class="new">새</span>` : ""}<button type="button" class="ttl" aria-expanded="${open}" aria-controls="d-${esc(j.id)}" title="${esc(j.title)}">${esc(shortTitle(j))}</button></div>
-      <div class="org"><span class="org-n">${esc(j.org)}</span>${d.summary ? `<span class="summ">${esc(d.summary)}</span>` : ""}</div>
-      <div class="m-meta"><span class="o">${esc(j.org)}</span>${eduRank(j) >= 0 ? eduPill(j) : ""}${p.monthly != null ? `<span class="pay">${esc(p.label)}</span>` : ""}</div>
+      <div class="org"><span class="org-n">${esc(j.org)}</span>${fitLine(j)}${d.summary ? `<span class="summ">${esc(d.summary)}</span>` : ""}</div>
+      <div class="m-meta"><span class="o">${esc(j.org)}</span>${eduRank(j) >= 0 ? eduFit(j) : ""}${p.monthly != null ? `<span class="pay">${esc(p.label)}</span>` : ""}${fitLine(j)}</div>
     </td>
     <td class="c-city"><span class="city ${cityCls}">${esc(j.city)}</span></td>
     ${WIDE ? `<td class="c-cat"><span class="cell-sm" title="${esc(catOf(j))}">${esc(catOf(j) === "기타" ? "행정·기타" : catOf(j))}</span></td>` : ""}
-    <td class="c-edu">${eduPill(j)}</td>
+    <td class="c-edu">${eduFit(j)}</td>
     ${WIDE ? `<td class="c-con"><span class="cell-sm" title="${esc(d.contract || j.employment_type || "")}">${esc(contractShort(j))}</span></td>` : ""}
     ${WIDE ? (si => `<td class="c-start">${si.label ? `<span class="cell-sm${si.t ? " num" : ""}" title="${esc(si.full)}">${esc(si.label)}</span>` : `<span class="dash" aria-label="근무 시작일 미기재">—</span>`}</td>`)(startInfo(j)) : ""}
     <td class="c-pay r">${payHTML}</td>
@@ -826,11 +1169,25 @@ function val(v) {
 function linkify(t) {
   return esc(t).replace(/https?:\/\/[^\s<,;)]+/g, u => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
 }
+function compareHTML(j) {
+  const f = fitOf(j);
+  if (!f) return "";
+  const p = profile, L = [];
+  const item = (k, cls, word, note) => L.push(`<li><span class="k">${k}</span><b class="${cls}">${word}</b>${note ? `<span class="muted">${note}</span>` : ""}</li>`);
+  const W = { ok: "충족", no: "미달", unk: "확인 필요" };
+  if (f.edu) item("학력", f.edu, W[f.edu], f.edu === "unk" ? "공고에 학력 요건이 정리되지 않았어요" : `요구 ${esc(REQ_LABEL[f.eduReq])}, 내 학력 ${esc(p.degree)}`);
+  if (f.exp) item("경력", f.exp, W[f.exp], f.exp === "unk" ? esc(String(val(det(j).experience) || "공고에 경력 요건이 없어요").slice(0, 60)) : f.expNeed ? `요구 ${f.expNeed}년 이상, 내 경력 ${p.years}년` : "신입 가능");
+  if (f.kwSet) item("관심 분야", f.kw.length ? "ok" : "unk", f.kw.length ? esc(f.kw.join(", ")) : "일치 없음", "");
+  if (f.cityOk != null) item("지역", f.cityOk ? "ok" : "unk", f.cityOk ? "희망 지역" : "희망 지역 밖", "");
+  const verdict = f.fail ? `<span class="verdict no">요건 미달</span>` : (f.edu || f.exp) ? `<span class="verdict">지원 가능</span>` : "";
+  return `<ul class="cmp">${verdict ? `<li>${verdict}</li>` : ""}${L.join("")}</ul>`;
+}
 function detailRow(j) {
   const d = det(j), has = !!j.detail;
   const F = [];
   const add = (label, html, wide) => { if (html) F.push(`<div${wide ? ' class="wide"' : ""}><dt>${label}</dt><dd>${html}</dd></div>`); };
   if (d.summary) add("업무 요약", `<span class="lead-sum">${esc(d.summary)}</span>`, true);
+  add("내 조건과 비교", compareHTML(j), true);
   if (d.education) add("학력 요건", `${eduPill(j)}${d.education_note ? ` <span class="muted">${esc(val(d.education_note))}</span>` : ""}`);
   add("전공", esc(val(d.major)));
   add("경력", [esc(val(d.experience)), d.experience_note ? `<span class="muted">${esc(val(d.experience_note))}</span>` : ""].filter(Boolean).join(" "));
@@ -861,6 +1218,7 @@ function detailRow(j) {
     ${has ? "" : `<p class="pending">첨부 공고문 분석 전이라 목록 정보만 보여요.</p>`}
     <dl class="facts">${F.join("")}</dl></td></tr>`;
 }
+const GROUPS = ["오늘 마감", "3일 안에", "이번 주", "다음 주", "그 이후", "상시·채용 시"];
 function groupOf(j) {
   const d = dday(j.deadline);
   if (d === null) return "상시·채용 시";
@@ -881,6 +1239,7 @@ function renderTable(list) {
     let msg = "조건에 맞는 공고가 없어요.", acts = `<button type="button" class="btn" data-act="clear">필터 모두 지우기</button>`;
     if (st.quick === "star" && !DATA.jobs.some(QUICK.star)) { msg = "아직 관심 공고가 없어요. 공고 왼쪽 별을 누르면 여기에 모여요."; acts = ""; }
     else if (st.quick === "master" && !pool.some(QUICK.master)) { msg = "학력 요건이 확인된 석사 이상 공고가 아직 없어요. 첨부 공고문 분석이 끝나면 채워져요."; }
+    else if (st.quick === "fit" && !pool.some(QUICK.fit)) { msg = "지금 열린 공고 중에는 내 조건에 맞는 공고가 없어요."; acts = `<button type="button" class="btn" data-act="profile">내 조건 고치기</button>`; }
     else if (st.q) { msg = `‘${esc(st.q)}’가 들어간 공고가 없어요. 기관명이나 짧은 단어로 찾아보세요.`; acts = `<button type="button" class="btn" data-act="clearq">검색어 지우기</button>`; }
     if (!st.etc && st.cat !== "기타") acts += `<button type="button" class="btn" data-act="etc">행정·기타 포함해서 보기</button>`;
     wrap.innerHTML = `<div class="empty"><p>${msg}</p>${acts}</div>`;
@@ -941,7 +1300,7 @@ function renderBoards() {
   const checked = list.filter(b => boardChecked[b.url] === TODAY).length;
   $("#boards-sub").textContent = `${list.length}곳 중 오늘 ${checked}곳 확인`;
   const short = n => n.replace(/\((?:구|재)[^)]*\)/g, "").replace(/\s*\([^)]{15,}\)\s*$/, "").trim();
-  $("#boards").innerHTML = `<div class="bgrid"><span class="colh"></span>${B_CITIES.map(c => `<span class="colh">${c}</span>`).join("")}
+  $("#boards-grid").innerHTML = `<div class="bgrid"><span class="colh"></span>${B_CITIES.map(c => `<span class="colh">${c}</span>`).join("")}
     ${B_GROUPS.filter(k => g[k]).map(k => {
       const n = B_CITIES.reduce((s, c) => s + (g[k][c] || []).length, 0);
       const done = B_CITIES.reduce((s, c) => s + (g[k][c] || []).filter(b => boardChecked[b.url] === TODAY).length, 0);
@@ -960,7 +1319,11 @@ function renderBoards() {
 /* ---------- main render ---------- */
 let annT, WIDE = true, NCOL = 9;
 function render() {
+  if (!TODAY) return;
   WIDE = innerWidth > 1180 || innerWidth <= 900; NCOL = WIDE ? 10 : 7;
+  // 보이는 보기만 그린다. 게시판·지난 공고는 처음 열 때 그린다.
+  if (st.view === "boards") { if (!boardsReady) { renderBoards(); boardsReady = true; } syncTabs(); return; }
+  if (st.view === "archive") { renderArchive(); syncTabs(); return; }
   renderLead();
   const pool = basePool().filter(j => matches(j, true));
   if (matchMedia("(min-width: 901px)").matches) renderRidge(pool); else $("#ridge").hidden = true;
@@ -1008,16 +1371,28 @@ document.addEventListener("click", e => {
     const on = !!starred[k];
     star.setAttribute("aria-pressed", on); star.setAttribute("aria-label", on ? "관심 공고에서 빼기" : "관심 공고에 추가");
     star.innerHTML = icon(on ? "i-star-f" : "i-star", "");
-    renderLead(); if (st.quick === "star") render();
+    renderLead(); if (st.quick === "star") render(); else syncTabs();
     return;
   }
   const act = t.closest("[data-act]");
   if (act) {
     const a = act.dataset.act;
+    if (a === "profile") { openProfile(); return; }
+    if (a === "hint-off") { store.set("profileHint", true); renderLead(); return; }
+    if (a === "tab-jobs") { goTab("jobs"); return; }
+    if (a === "orgs-all") { arch.allOrgs = !arch.allOrgs; renderArchOrgs(archList()); const nb = $('[data-act="orgs-all"]'); if (nb) nb.focus(); return; }
+    if (a === "arch-more") { arch.limit += 100; renderArchList(); return; }
     if (a === "clear") clearFilters();
     if (a === "clearq") { st.q = ""; $("#f-q").value = ""; }
     if (a === "etc") { st.etc = true; $("#f-etc").checked = true; }
     render(); return;
+  }
+  const og = t.closest("button[data-org]");
+  if (og) {
+    arch.q = og.dataset.org; $("#a-q").value = arch.q; arch.limit = 60; renderArchList();
+    $("#alist-h").scrollIntoView({ block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    $("#a-q").focus({ preventScroll: true });
+    return;
   }
   const bl = t.closest("a[data-board]");
   if (bl) { boardChecked[bl.dataset.board] = TODAY; store.set("boardChecked", boardChecked); setTimeout(renderBoards, 0); return; }
@@ -1043,7 +1418,11 @@ let qT; $("#f-q").addEventListener("input", e => { clearTimeout(qT); qT = setTim
 $("#reset").addEventListener("click", () => { clearFilters(); render(); });
 $("#more-btn").addEventListener("click", e => { const on = $("#more").classList.toggle("show"); e.currentTarget.setAttribute("aria-expanded", on); });
 document.addEventListener("keydown", e => {
-  if (e.key === "/" && !/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) { e.preventDefault(); $("#f-q").focus(); }
+  if (document.querySelector("dialog[open]")) return;   // 대화상자는 Esc 를 스스로 처리
+  if (e.key === "/" && !/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) {
+    const q = st.view === "archive" ? $("#a-q") : st.view === "jobs" ? $("#f-q") : null;
+    if (q) { e.preventDefault(); q.focus(); }
+  }
   if (e.key === "Escape" && st.open) { const id = st.open; st.open = null; render(); const b = $(`tr.job[data-id="${CSS.escape(id)}"] .ttl`); if (b) b.focus(); }
 });
 
@@ -1054,19 +1433,250 @@ document.addEventListener("pointerover", e => { const d = e.target.closest(".day
 document.addEventListener("focusin", e => { const d = e.target.closest(".day"); d ? showTip(d) : (tip.hidden = true); });
 addEventListener("scroll", () => { tip.hidden = true; }, { passive: true });
 
-/* tabs (mobile) */
-function setView(v) {
-  if (v === "star") { st.quick = "star"; st.view = "jobs"; }
-  else { if (v === "jobs" && st.quick === "star") st.quick = null; st.view = v; }
+/* ---------- views: 공고 | 관심 | 지난 공고 | 게시판, synced with location.hash ---------- */
+// 관심 = 공고 표에 관심 필터(st.quick === "star")를 건 것
+const TAB_OF_HASH = { jobs: "jobs", starred: "starred", archive: "archive", boards: "boards", "boards-sheet": "boards" };
+let boardsReady = false;
+const curTab = () => st.view === "jobs" ? (st.quick === "star" ? "starred" : "jobs") : st.view;
+function applyTab(tab) {
+  const prev = curTab();
+  if (tab === "starred") { st.view = "jobs"; st.quick = "star"; st.day = null; }
+  else if (tab === "jobs") { st.view = "jobs"; if (st.quick === "star") st.quick = null; }
+  else st.view = tab;
   document.body.dataset.view = st.view;
-  render(); scrollTo({ top: 0 });
+  if (!TODAY) { syncTabs(); return; }
+  render();
+  if (prev !== tab) scrollTo({ top: 0 });
 }
+function goTab(tab) {
+  if (location.hash === "#" + tab) { applyTab(tab); scrollTo({ top: 0 }); }
+  else location.hash = tab;   // 새 기록이 생겨 뒤로 가기가 동작한다 → hashchange 에서 applyTab
+}
+addEventListener("hashchange", () => applyTab(TAB_OF_HASH[location.hash.slice(1)] || "jobs"));
 function syncTabs() {
-  const cur = st.view === "boards" ? "boards" : st.quick === "star" ? "star" : "jobs";
+  const cur = curTab();
+  $$(".views [role=tab]").forEach(b => { const on = b.dataset.tab === cur; b.setAttribute("aria-selected", on); b.tabIndex = on ? 0 : -1; });
   $$(".tabbar button").forEach(b => b.dataset.tab === cur ? b.setAttribute("aria-current", "page") : b.removeAttribute("aria-current"));
+  // 관심 칩을 눌러도 주소가 따라가게 (새 기록은 만들지 않음)
+  const want = "#" + cur;
+  if (location.hash !== want && (location.hash || cur !== "jobs")) history.replaceState(null, "", want);
+  if (TODAY) {
+    $("#vn-jobs").textContent = basePool().length;
+    $("#vn-starred").textContent = DATA.jobs.filter(QUICK.star).length || "";
+    $("#vn-archive").textContent = archList().length || "";
+  }
 }
-$$(".tabbar button").forEach(b => b.addEventListener("click", () => setView(b.dataset.tab)));
-$("#to-boards").addEventListener("click", e => { e.preventDefault(); $("#boards-sheet").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); });
+$$(".tabbar button").forEach(b => b.addEventListener("click", () => goTab(b.dataset.tab)));
+$$(".views [role=tab]").forEach(b => b.addEventListener("click", () => goTab(b.dataset.tab)));
+$("#views").addEventListener("keydown", e => {
+  const tabs = $$(".views [role=tab]"), i = tabs.indexOf(document.activeElement);
+  if (i < 0) return;
+  const n = e.key === "ArrowRight" ? (i + 1) % tabs.length : e.key === "ArrowLeft" ? (i - 1 + tabs.length) % tabs.length : e.key === "Home" ? 0 : e.key === "End" ? tabs.length - 1 : -1;
+  if (n < 0) return;
+  e.preventDefault(); tabs[n].focus(); goTab(tabs[n].dataset.tab);
+});
+// 헤더 '채용 게시판'은 href="#boards" 그대로 → hashchange 로 게시판 탭
+
+/* ---------- 지난 공고 (archive) ---------- */
+const arch = { q: "", city: "", allOrgs: false, limit: 60, built: false };
+const archList = () => (Array.isArray(DATA.archive) ? DATA.archive : []).filter(a => a && typeof a === "object");
+const orgName = o => String(o || "기관 미상").replace(LEGAL, "").trim();
+const md = s => { const d = toDate(s); return `${d.getMonth() + 1}.${String(d.getDate()).padStart(2, "0")}`; };
+// 공고가 열려 있던 달들(처음 본 날 ~ 마감일). 처음 본 날이 없으면 마감한 달만.
+function monthsOf(a) {
+  const end = isoDate(a.closed_on) ? a.closed_on : isoDate(a.deadline) ? a.deadline : null;
+  const startRaw = [a.first_seen, a.posted_date].find(isoDate) || end;
+  if (!end && !startRaw) return [];
+  const s = toDate(startRaw && (!end || startRaw <= end) ? startRaw : end), e = toDate(end || startRaw);
+  const out = [];
+  for (let y = s.getFullYear(), m = s.getMonth(), k = 0; (y < e.getFullYear() || (y === e.getFullYear() && m <= e.getMonth())) && k < 12; k++) {
+    out.push(m); if (++m > 11) { m = 0; y++; }
+  }
+  return out;
+}
+function renderArchive() {
+  const all = archList();
+  const body = $("#arch-body");
+  if (!all.length) {
+    $("#arch-sub").textContent = "";
+    body.innerHTML = `<div class="empty"><strong>아직 쌓인 지난 공고가 없어요.</strong>
+      <p>이제부터 마감되는 공고가 여기에 모여요. 몇 주만 지나도 기관마다 언제 사람을 뽑는지 보이기 시작해요.</p>
+      <button type="button" class="btn" data-act="tab-jobs">열린 공고 보기</button></div>`;
+    arch.built = false;
+    return;
+  }
+  const orgs = new Set(all.map(a => orgName(a.org)));
+  $("#arch-sub").textContent = `마감된 공고 ${all.length}건, 기관 ${orgs.size}곳`;
+  if (!arch.built) {
+    body.innerHTML = `<h3 id="orgs-h">기관별 채용 기록</h3><p>공고가 많았던 기관부터 보여요. 칸 하나가 한 달이고, 진할수록 그달에 열린 공고가 많았어요.</p>
+      <div id="orgs"></div>
+      <h3 id="alist-h">마감된 공고</h3><p>최근에 마감된 순서예요.</p>
+      <form class="afil" role="search" onsubmit="return false">
+        <fieldset class="seg" id="a-city">
+          <legend class="vh">지역</legend>
+          <input type="radio" name="acity" id="ac-all" value="" checked><label for="ac-all">전체</label>
+          <input type="radio" name="acity" id="ac-cc" value="춘천"><label for="ac-cc"><i style="background:var(--city-cc)"></i>춘천</label>
+          <input type="radio" name="acity" id="ac-wj" value="원주"><label for="ac-wj"><i style="background:var(--city-wj)"></i>원주</label>
+        </fieldset>
+        <div class="search">
+          <label class="vh" for="a-q">지난 공고 검색</label>
+          ${icon("i-search")}
+          <input type="search" id="a-q" placeholder="공고명, 기관으로 찾기" autocomplete="off" spellcheck="false" enterkeyhint="search">
+        </div>
+        <button type="button" class="reset" id="a-reset" hidden>검색 지우기</button>
+      </form>
+      <div id="alist"></div>
+      <p class="vh" aria-live="polite" id="a-announce"></p>`;
+    $("#a-city").addEventListener("change", e => { arch.city = e.target.value; arch.limit = 60; renderArchList(); });
+    let t; $("#a-q").addEventListener("input", e => { clearTimeout(t); t = setTimeout(() => { arch.q = e.target.value.trim(); arch.limit = 60; renderArchList(); }, 150); });
+    $("#a-reset").addEventListener("click", () => { arch.q = ""; arch.city = ""; $("#a-q").value = ""; $("#ac-all").checked = true; renderArchList(); });
+    arch.built = true;
+  }
+  renderArchOrgs(all); renderArchList();
+}
+function renderArchOrgs(all) {
+  const by = new Map();
+  for (const a of all) {
+    const n = orgName(a.org);
+    const o = by.get(n) || { name: n, type: a.org_type || "", n: 0, m: Array(12).fill(0), last: "" };
+    o.n++; monthsOf(a).forEach(m => o.m[m]++);
+    if (isoDate(a.closed_on) && a.closed_on > o.last) o.last = a.closed_on;
+    by.set(n, o);
+  }
+  const live = new Set(DATA.jobs.filter(isOpen).map(j => orgName(j.org)));
+  const list = [...by.values()].sort((a, b) => b.n - a.n || b.last.localeCompare(a.last) || a.name.localeCompare(b.name, "ko"));
+  const shown = arch.allOrgs ? list : list.slice(0, 12);
+  const nowM = toDate(TODAY).getMonth();
+  const lv = (c, max) => !c ? "" : max <= 1 ? "l3" : c / max > .66 ? "l3" : c / max > .33 ? "l2" : "l1";
+  const rows = shown.map(o => {
+    const max = Math.max(...o.m);
+    const peak = o.m.map((c, i) => [c, i]).filter(([c]) => c && c >= max * .66).map(([, i]) => i + 1 + "월");
+    const label = o.m.map((c, i) => c ? `${i + 1}월 ${c}건` : "").filter(Boolean).join(", ");
+    return `<tr>
+      <td class="c-name"><button type="button" class="on" data-org="${esc(o.name)}" title="${esc(o.name)} 공고만 보기">${esc(o.name)}</button>
+        <span class="ot">${esc(o.type)}${live.has(o.name) ? `${o.type ? ", " : ""}<span class="live">지금 모집 중</span>` : ""}</span></td>
+      <td class="c-n"><span class="cnt">${o.n}</span><span class="vh">건</span></td>
+      <td class="c-m"><span class="mstrip" role="img" aria-label="공고가 열린 달: ${esc(label || "기록 없음")}">${o.m.map((c, i) => `<i class="${lv(c, max)}${i === nowM ? " now" : ""}"></i>`).join("")}</span>
+        <span class="m-peak">${esc(peak.slice(0, 3).join(", "))}</span></td>
+      <td class="c-pk">${esc(peak.slice(0, 3).join(", ")) || `<span class="dash">—</span>`}</td>
+      <td class="c-last"><span class="num">${o.last ? md(o.last) : "—"}</span></td>
+    </tr>`;
+  }).join("");
+  $("#orgs").innerHTML = `<table class="orgt" aria-labelledby="orgs-h">
+    <colgroup><col><col class="o-n"><col class="o-m"><col class="o-pk"><col class="o-last"></colgroup>
+    <thead><tr><th scope="col">기관</th><th scope="col">공고</th>
+      <th scope="col"><span class="vh">공고가 열린 달, 1월부터 12월</span><span class="mhead" aria-hidden="true">${Array.from({ length: 12 }, (_, i) => `<span>${i % 3 === 0 ? i + 1 + "월" : ""}</span>`).join("")}</span></th>
+      <th scope="col">주로 뽑는 달</th><th scope="col">마지막 마감</th></tr></thead>
+    <tbody>${rows}</tbody></table>
+    ${list.length > 12 ? `<div class="orgs-more"><button type="button" class="btn" data-act="orgs-all" aria-expanded="${arch.allOrgs}">${arch.allOrgs ? "12곳만 보기" : `기관 ${list.length}곳 모두 보기`}</button></div>` : ""}`;
+}
+function renderArchList() {
+  const words = arch.q.toLowerCase().split(/\s+/).filter(Boolean);
+  const list = archList().filter(a => {
+    if (arch.city && a.city !== arch.city) return false;
+    if (!words.length) return true;
+    const d = det(a), hay = [a.title, a.org, a.requirements, val(d.major), val(d.summary), d.education].join(" ").toLowerCase();
+    return words.every(w => hay.includes(w));
+  }).sort((a, b) => String(b.closed_on || "").localeCompare(String(a.closed_on || "")) || String(a.org).localeCompare(String(b.org), "ko"));
+  $("#a-reset").hidden = !(arch.q || arch.city);
+  $("#a-announce").textContent = `지난 공고 ${list.length}건 표시`;
+  if (!list.length) {
+    $("#alist").innerHTML = `<div class="empty"><p>${arch.q ? `‘${esc(arch.q)}’가 들어간 지난 공고가 없어요.` : "이 지역의 지난 공고가 없어요."}</p></div>`;
+    return;
+  }
+  const yr = TODAY.slice(0, 4);
+  const shown = list.slice(0, arch.limit);
+  $("#alist").innerHTML = `<table class="atab" aria-labelledby="alist-h">
+    <colgroup><col class="a-due"><col><col class="a-city"><col class="a-edu"><col class="a-src"></colgroup>
+    <thead><tr><th scope="col">마감일</th><th scope="col">공고</th><th scope="col">지역</th><th scope="col">학력</th><th scope="col">원문</th></tr></thead>
+    <tbody>${shown.map(a => `<tr>
+      <td class="a-due"><span class="d">${isoDate(a.closed_on) ? md(a.closed_on) : "—"}${isoDate(a.closed_on) && a.closed_on.slice(0, 4) !== yr ? `<small>${a.closed_on.slice(0, 4)}</small>` : ""}</span></td>
+      <td class="a-t"><div class="t" title="${esc(a.title)}">${esc(shortTitle(a))}</div><div class="o">${esc(a.org)}</div></td>
+      <td class="a-city"><span class="city ${a.city === "원주" ? "wj" : "cc"}">${esc(a.city || "")}</span></td>
+      <td class="a-edu">${eduPill(a)}</td>
+      <td class="a-src">${a.url ? `<a href="${esc(a.url)}" target="_blank" rel="noopener" aria-label="원문 공고 열기, 새 창">원문${icon("i-ext")}</a>` : `<span class="dash">—</span>`}</td>
+    </tr>`).join("")}
+    ${list.length > shown.length ? `<tr class="more-row"><td colspan="5"><button type="button" class="btn" data-act="arch-more">${list.length - shown.length}건 더 보기</button></td></tr>` : ""}
+    </tbody></table>`;
+}
+
+/* ---------- 내 조건 dialog ---------- */
+function renderProfileTool() {
+  const b = $("#open-profile");
+  const bits = profile ? [profile.degree, profile.years != null ? `경력 ${profile.years}년` : ""].filter(Boolean) : [];
+  b.classList.toggle("set", !!profile);
+  b.innerHTML = `${icon("i-user")}내 조건${bits.length ? `<span class="v">${esc(bits.join(", "))}</span>` : ""}`;
+}
+function openProfile() {
+  store.set("profileHint", true);
+  const p = profile || { degree: "", keywords: [], years: null, cities: [] };
+  $("#pf-deg").value = p.degree || "";
+  $("#pf-kw").value = p.keywords.join(", ");
+  $("#pf-yrs").value = p.years ?? "";
+  $$('input[name="pf-city"]').forEach(c => c.checked = p.cities.includes(c.value));
+  $("#pf-dlg").showModal();
+}
+$("#open-profile").addEventListener("click", openProfile);
+$("#pf-x").addEventListener("click", () => $("#pf-dlg").close());
+$("#pf-form").addEventListener("submit", () => {
+  const y = $("#pf-yrs").value.trim();
+  setProfile({
+    degree: $("#pf-deg").value,
+    keywords: $("#pf-kw").value.split(/[,，、\n]/),
+    years: y === "" ? null : Math.max(0, parseFloat(y)) || 0,
+    cities: $$('input[name="pf-city"]:checked').map(c => c.value),
+  });
+  render();
+});
+$("#pf-clear").addEventListener("click", () => { setProfile(null); $("#pf-dlg").close(); render(); });
+
+/* ---------- 캘린더 구독 dialog ---------- */
+const FEEDS = [["deadlines.ics", "전체 마감", "열린 공고 전부"], ["deadlines-master.ics", "석사 이상만", "석사 이상·박사 요구 공고"]];
+const GH_BASE = "https://akasilo.github.io/chuncheon-wonju-jobs/";
+const isLoopback = h => /^(localhost|127\.\d+\.\d+\.\d+|\[::1\]|::1)$/.test(h) || /\.localhost$/.test(h);
+const isHomeNet = h => isLoopback(h) || /^192\.168\./.test(h) || /^10\./.test(h);
+const webcal = u => "webcal://" + u.replace(/^https?:\/\//, "");
+function openCal() {
+  const host = location.hostname, canWebcal = !isLoopback(host);
+  $("#feeds").innerHTML = FEEDS.map(([f, t, s], i) => {
+    const u = new URL(f, location.href).href;
+    return `<div class="feed"><h3>${t}<span>${s}</span></h3>
+      <input class="url" id="feed-${i}" readonly value="${esc(u)}" aria-label="${t} 캘린더 주소">
+      <div class="acts"><button type="button" class="btn-s" data-copy="${esc(u)}">주소 복사</button>${canWebcal ? `<a class="btn-s" href="${esc(webcal(u))}">${icon("i-cal")}webcal로 열기</a>` : ""}</div></div>`;
+  }).join("");
+  const home = $("#cal-home");
+  home.hidden = !isHomeNet(host);
+  if (!home.hidden) home.innerHTML = `지금 주소는 집 와이파이 안에서만 열려요. 밖에서 쓰는 휴대폰은 GitHub 주소로 구독하세요. <code>${GH_BASE}deadlines.ics</code>
+    <span class="acts" style="margin-top:8px"><button type="button" class="btn-s" data-copy="${GH_BASE}deadlines.ics">GitHub 주소 복사 (전체)</button><button type="button" class="btn-s" data-copy="${GH_BASE}deadlines-master.ics">GitHub 주소 복사 (석사 이상)</button></span>`;
+  $("#cal-apple").innerHTML = canWebcal
+    ? `<li>위에서 <b>webcal로 열기</b>를 눌러요.</li><li>구독을 누르면 캘린더 앱에 추가돼요.</li><li>안 열리면 설정 → 캘린더 → 계정 → 구독 캘린더 추가에 주소를 붙여넣어요.</li>`
+    : `<li>위에서 <b>주소 복사</b>를 눌러요.</li><li>설정 → 캘린더 → 계정 → 계정 추가 → 기타 → 구독 캘린더 추가로 가요.</li><li>주소를 붙여넣고 다음을 눌러요.</li>`;
+  $("#cal-dlg").showModal();
+}
+$("#open-cal").addEventListener("click", openCal);
+// 닫히면 연 버튼으로 초점을 돌려준다 (모바일 힌트·빈 화면 버튼에서 열었으면 그 자리가 사라졌을 수 있어서)
+$("#cal-dlg").addEventListener("close", () => $("#open-cal").focus({ preventScroll: true }));
+$("#pf-dlg").addEventListener("close", () => { const b = $("#open-profile"); if (b.offsetParent) b.focus({ preventScroll: true }); });
+async function copyText(text, dlg) {
+  try { await navigator.clipboard.writeText(text); return true; } catch (e) {}
+  // http://192.168.x 처럼 보안 연결이 아니면 clipboard API 가 막혀서 예전 방식으로
+  const ta = document.createElement("textarea");
+  ta.value = text; ta.setAttribute("readonly", ""); ta.style.cssText = "position:fixed;opacity:0;top:0;left:0";
+  (dlg || document.body).append(ta); ta.select();
+  let ok = false; try { ok = document.execCommand("copy"); } catch (e) {}
+  ta.remove(); return ok;
+}
+$("#cal-dlg").addEventListener("click", async e => {
+  const b = e.target.closest("[data-copy]");
+  if (!b) return;
+  const ok = await copyText(b.dataset.copy, $("#cal-dlg"));
+  const orig = b.dataset.label || (b.dataset.label = b.textContent);
+  b.textContent = ok ? "복사했어요" : "직접 복사해요";
+  b.classList.toggle("ok", ok);
+  $("#cal-live").textContent = ok ? "주소를 복사했어요" : "복사하지 못했어요. 주소 칸을 골라 직접 복사해요";
+  if (!ok) { const inp = b.closest(".feed")?.querySelector(".url"); if (inp) inp.select(); }
+  clearTimeout(b._t); b._t = setTimeout(() => { b.textContent = orig; b.classList.remove("ok"); }, 2200);
+});
 
 /* theme: light by default; dark only when chosen */
 function syncTheme() {
@@ -1113,12 +1723,13 @@ async function load() {
   else { const d = toDate(TODAY); d.setDate(d.getDate() - 3); NEW_SINCE = localISO(d); }
   // 기본은 행정·기타도 보여줌 (예전 showEtc 저장값은 무시)
   st.etc = !!store.get("showEtc2", true); $("#f-etc").checked = st.etc;
-  setStamp(); fillSelects(); render(); renderBoards();
+  setStamp(); fillSelects();
+  applyTab(TAB_OF_HASH[location.hash.slice(1)] || "jobs");   // 게시판은 처음 열 때 그린다
   setTimeout(markVisit, 10000);
 }
 addEventListener("pagehide", () => { if (TODAY) markVisit(); });
 document.addEventListener("visibilitychange", () => {
-  if (document.visibilityState === "visible" && TODAY && localISO() !== TODAY) { TODAY = localISO(); setStamp(); render(); renderBoards(); }
+  if (document.visibilityState === "visible" && TODAY && localISO() !== TODAY) { TODAY = localISO(); setStamp(); render(); if (boardsReady) renderBoards(); }
 });
 load();
 </script>

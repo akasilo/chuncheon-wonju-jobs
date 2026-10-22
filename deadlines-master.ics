@@ -1,0 +1,315 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//akasilo//chuncheon-wonju-jobs//KO
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:춘천·원주 채용 마감 (석사 이상)
+X-WR-TIMEZONE:Asia/Seoul
+BEGIN:VTIMEZONE
+TZID:Asia/Seoul
+X-LIC-LOCATION:Asia/Seoul
+BEGIN:STANDARD
+TZOFFSETFROM:+0900
+TZOFFSETTO:+0900
+TZNAME:KST
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:0f85adff@chuncheon-wonju-jobs
+DTSTAMP:20261022T192109Z
+DTSTART;TZID=Asia/Seoul:20261023T160000
+DTEND;TZID=Asia/Seoul:20261023T170000
+SUMMARY:[마감] 연세대학교(미래) 교육전문연구원 채용(앵
+ 커사업단) · 연세대학교 미래캠퍼스 앵커사업단
+DESCRIPTION:기관: 연세대학교 미래캠퍼스 앵커사업단\n지역
+ : 원주\n직종: 연구직\n학력: 석사 이상\n월급: 월 265.3만
+ 원\n마감시각: 17:00\n원문: https://www.yonsei.ac.kr/bbs/wj/112/9443
+ 17/artclView.do
+URL:https://www.yonsei.ac.kr/bbs/wj/112/944317/artclView.do
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 연세대학교(미래) 교육전문연구원 
+ 채용(앵커사업단)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:694b1ba8@chuncheon-wonju-jobs
+DTSTAMP:20261022T192109Z
+DTSTART;TZID=Asia/Seoul:20261023T225900
+DTEND;TZID=Asia/Seoul:20261023T235900
+SUMMARY:[마감] 합성연구센터 연구원 채용 · (주)케이메디
+ 켐
+DESCRIPTION:기관: (주)케이메디켐\n지역: 춘천\n직종: 연구직
+ \n학력: 석사 이상\n월급: 월 291.7만원\n마감시각: 24:00\n원
+ 문: https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54825417
+URL:https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54825417
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 합성연구센터 연구원 채용
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:df03b6c6@chuncheon-wonju-jobs
+DTSTAMP:20261022T192109Z
+DTSTART;TZID=Asia/Seoul:20261023T170000
+DTEND;TZID=Asia/Seoul:20261023T180000
+SUMMARY:[마감] 강원대학교 AI전략센터 연구교수 신규채용 
+ · 강원대학교 AI전략센터
+DESCRIPTION:기관: 강원대학교 AI전략센터\n지역: 원주\n직종:
+  연구직\n학력: 박사\n월급: 월 369만원\n마감시각: 2026-10-2
+ 3 18:00\n원문: https://www.kangwon.ac.kr/ko/bbs/716/detail.do?pstSn=5184
+URL:https://www.kangwon.ac.kr/ko/bbs/716/detail.do?pstSn=5184
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 강원대학교 AI전략센터 연구교수 신
+ 규채용
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:e6a9cdfd@chuncheon-wonju-jobs
+DTSTAMP:20261022T192109Z
+DTSTART;TZID=Asia/Seoul:20261023T170000
+DTEND;TZID=Asia/Seoul:20261023T180000
+SUMMARY:[마감] 한림대학교 뇌혈관질환 선도연구센터 박사
+ 급 연구원 채용(의료인공지능 및 데이터과학) · 한림대
+ 학교 뇌혈관질환 선도연구센터
+DESCRIPTION:기관: 한림대학교 뇌혈관질환 선도연구센터\n지
+ 역: 춘천\n직종: 연구직\n학력: 박사\n월급: 월 500.0만원\n
+ 마감시각: 18:00\n원문: https://www.hallym.ac.kr/bbs/hallym/151/39061
+ 4/artclView.do
+URL:https://www.hallym.ac.kr/bbs/hallym/151/390614/artclView.do
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 한림대학교 뇌혈관질환 선도연구센
+ 터 박사급 연구원 채용(의료인공지능 및 데이터과학)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:0254476e@chuncheon-wonju-jobs
+DTSTAMP:20261022T192109Z
+DTSTART;VALUE=DATE:20261027
+DTEND;VALUE=DATE:20261028
+SUMMARY:[마감] 한림대학교 AI융합연구원 연구교수(비전임) 
+ 채용(디지털헬스케어·사회안전) · 한림대학교 AI융합연
+ 구원
+DESCRIPTION:기관: 한림대학교 AI융합연구원\n지역: 춘천\n직
+ 종: 연구직\n학력: 박사\n마감시각: 2026-10-27 (시각 미기재
+ )\n원문: https://www.hallym.ac.kr/bbs/hallym/151/391383/artclView.do
+URL:https://www.hallym.ac.kr/bbs/hallym/151/391383/artclView.do
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 한림대학교 AI융합연구원 연구교수(
+ 비전임) 채용(디지털헬스케어·사회안전)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bc5220e5@chuncheon-wonju-jobs
+DTSTAMP:20261022T192109Z
+DTSTART;TZID=Asia/Seoul:20261027T160000
+DTEND;TZID=Asia/Seoul:20261027T170000
+SUMMARY:[마감] 2026-47 연구직(연구교수) 채용 – 인공지능 
+ 연구·개발 · 강원대학교병원
+DESCRIPTION:기관: 강원대학교병원\n지역: 춘천\n직종: 연구
+ 직\n학력: 박사\n월급: 월 625.0만원\n마감시각: 17:00\n원문:
+  https://www.knuh.or.kr/hospitalinfo/hospitalinfo_03_05_view.asp?bid=5&pag
+ e=1&idx=34217
+URL:https://www.knuh.or.kr/hospitalinfo/hospitalinfo_03_05_view.asp?bid=5&p
+ age=1&idx=34217
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 2026-47 연구직(연구교수) 채용 – 인
+ 공지능 연구·개발
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:d046a5f5@chuncheon-wonju-jobs
+DTSTAMP:20261022T192109Z
+DTSTART;TZID=Asia/Seoul:20261027T160000
+DTEND;TZID=Asia/Seoul:20261027T170000
+SUMMARY:[마감] 연세대학교(미래) 교육전문연구원 채용(미
+ 래대학혁신지원사업단\, 2026년 2차) · 연세대학교 미래
+ 캠퍼스 미래대학혁신지원사업단
+DESCRIPTION:기관: 연세대학교 미래캠퍼스 미래대학혁신지
+ 원사업단\n지역: 원주\n직종: 연구직\n학력: 석사 이상\n
+ 월급: 월 265.3만원\n마감시각: 17:00\n원문: https://www.yonsei.a
+ c.kr/bbs/wj/112/944383/artclView.do
+URL:https://www.yonsei.ac.kr/bbs/wj/112/944383/artclView.do
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 연세대학교(미래) 교육전문연구원 
+ 채용(미래대학혁신지원사업단\, 2026년 2차)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:afbc768a@chuncheon-wonju-jobs
+DTSTAMP:20261022T192109Z
+DTSTART;TZID=Asia/Seoul:20261028T225900
+DTEND;TZID=Asia/Seoul:20261028T235900
+SUMMARY:[마감] 한라대학교 2026학년도 2학기 비전임교원(특
+ 별교원) 초빙(3차) - 대학IR센터·SMART사업단 연구교수 · 
+ 한라대학교
+DESCRIPTION:기관: 한라대학교\n지역: 원주\n직종: 강사/교원\
+ n학력: 박사\n마감시각: 2026-10-28 24:00\n원문: https://www.halla
+ .ac.kr/bbs/kr/40/209993/artclView.do
+URL:https://www.halla.ac.kr/bbs/kr/40/209993/artclView.do
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 한라대학교 2026학년도 2학기 비전임
+ 교원(특별교원) 초빙(3차) - 대학IR센터·SMART사업단 연구
+ 교수
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:0d1bc357@chuncheon-wonju-jobs
+DTSTAMP:20261022T192109Z
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261031
+SUMMARY:[마감] (주)메디안디노스틱 기업부설연구소(분자진
+ 단제품 개발) 연구원 채용 · (주)메디안디노스틱
+DESCRIPTION:기관: (주)메디안디노스틱\n지역: 춘천\n직종: 연
+ 구직\n학력: 석사 이상\n원문: https://www.work24.go.kr/wk/a/b/150
+ 0/empDetailAuthView.do?wantedAuthNo=231566&infoTypeCd=KOS&infoTypeGroup=tb
+ _workinfogubun
+URL:https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=
+ 231566&infoTypeCd=KOS&infoTypeGroup=tb_workinfogubun
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: (주)메디안디노스틱 기업부설연구소
+ (분자진단제품 개발) 연구원 채용
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:9f3fd1a3@chuncheon-wonju-jobs
+DTSTAMP:20261022T192109Z
+DTSTART;TZID=Asia/Seoul:20261030T150000
+DTEND;TZID=Asia/Seoul:20261030T160000
+SUMMARY:[마감] 한림대학교 2027학년도 1학기 전임교원 공개
+ 초빙(총 30명) · 한림대학교
+DESCRIPTION:기관: 한림대학교\n지역: 춘천\n직종: 강사/교원\
+ n학력: 박사\n마감시각: 16:00\n원문: https://www.hallym.ac.kr/bbs
+ /hallym/151/391198/artclView.do
+URL:https://www.hallym.ac.kr/bbs/hallym/151/391198/artclView.do
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 한림대학교 2027학년도 1학기 전임교
+ 원 공개초빙(총 30명)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:c615169b@chuncheon-wonju-jobs
+DTSTAMP:20261022T192109Z
+DTSTART;TZID=Asia/Seoul:20261030T225900
+DTEND;TZID=Asia/Seoul:20261030T235900
+SUMMARY:[마감] 이엘메드(주) 신약개발 벤처회사 연구원 채
+ 용 · 이엘메드(주)
+DESCRIPTION:기관: 이엘메드(주)\n지역: 춘천\n직종: 연구직\n
+ 학력: 석사 이상\n마감시각: 24:00\n원문: https://www.saramin.co
+ .kr/zf_user/jobs/relay/view?rec_idx=54899710
+URL:https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54899710
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 이엘메드(주) 신약개발 벤처회사 연
+ 구원 채용
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:071d20d5@chuncheon-wonju-jobs
+DTSTAMP:20261022T192109Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:[마감] 한림대학교 뇌혈관질환 선도연구센터 연구
+ 교수 및 석사급 연구원 채용 · 한림대학교 뇌혈관질환 
+ 선도연구센터
+DESCRIPTION:기관: 한림대학교 뇌혈관질환 선도연구센터\n지
+ 역: 춘천\n직종: 연구직\n학력: 석사 이상\n원문: https://www
+ .hibrain.net/recruitment/recruits/3601318
+URL:https://www.hibrain.net/recruitment/recruits/3601318
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 한림대학교 뇌혈관질환 선도연구센
+ 터 연구교수 및 석사급 연구원 채용
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:658d4b68@chuncheon-wonju-jobs
+DTSTAMP:20261022T192109Z
+DTSTART;TZID=Asia/Seoul:20261106T170000
+DTEND;TZID=Asia/Seoul:20261106T180000
+SUMMARY:[마감] 2027학년도 1학기 강원대학교 교수 초빙(전 
+ 캠퍼스\, 공고 제2026-333호) · 강원대학교(교무혁신과)
+DESCRIPTION:기관: 강원대학교(교무혁신과)\n지역: 춘천\n직
+ 종: 강사/교원\n학력: 박사\n마감시각: 18:00\n원문: https://w
+ ww.kangwon.ac.kr/ko/bbs/716/detail.do?pstSn=5191
+URL:https://www.kangwon.ac.kr/ko/bbs/716/detail.do?pstSn=5191
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 2027학년도 1학기 강원대학교 교수 초
+ 빙(전 캠퍼스\, 공고 제2026-333호)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:87cb4ae9@chuncheon-wonju-jobs
+DTSTAMP:20261022T192109Z
+DTSTART;VALUE=DATE:20261119
+DTEND;VALUE=DATE:20261120
+SUMMARY:[마감] 기업부설연구소 연구소장 채용 · 주식회사 
+ 애니우드
+DESCRIPTION:기관: 주식회사 애니우드\n지역: 원주\n직종: 연
+ 구직\n학력: 석사 이상\n월급: 월 417만원\n마감시각: 2026-1
+ 1-19 24시\n원문: https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_
+ idx=55340222
+URL:https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=55340222
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 기업부설연구소 연구소장 채용
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:de20c4de@chuncheon-wonju-jobs
+DTSTAMP:20261022T192109Z
+DTSTART;VALUE=DATE:20271231
+DTEND;VALUE=DATE:20280101
+SUMMARY:[마감] 강원대학교 빅데이터메디컬융합교육연구단
+  박사후연구원 채용 · 강원대학교 산학협력단
+DESCRIPTION:기관: 강원대학교 산학협력단\n지역: 춘천\n직종
+ : 데이터분석\n학력: 박사\n원문: https://job.incruit.com/jobdb_i
+ nfo/jobpost.asp?job=2607280004485
+URL:https://job.incruit.com/jobdb_info/jobpost.asp?job=2607280004485
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 강원대학교 빅데이터메디컬융합교
+ 육연구단 박사후연구원 채용
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+END:VCALENDAR
