@@ -19,7 +19,7 @@
 <style>
 /* DESIGN NOTE — Mercury light world, set in Paperlogy
    Subject: a private morning check of 춘천·원주 openings; calm, precise, bank-statement quiet.
-   Color  canvas #fbfcfd · sheet #fff · ink #28253b · ink-2 #554e7b · slate #70707d · fog #c3c3cc
+   Color  canvas #fbfcfd · sheet #fff · ink #28253b · ink-2 #554e7b · slate #6b6b78 · fog #c3c3cc
           lavender #edecfb (week band, open row) · indigo #5266eb = the ONLY solid action fill
           night #171721 = the masthead band (dark theme: night/night-raised/on-dark #ededf3)
           data hues stay outside the chrome: 춘천 #1d7fbf / 원주 #b8557e (CVD-validated),
@@ -45,7 +45,7 @@
   --sheet: #FFFFFF;
   --ink: #28253b;
   --ink-2: #554e7b;
-  --ink-3: #70707d;
+  --ink-3: #6b6b78;
   --rule: #e1e1ea;
   --rule-soft: #ededf3;
   --rule-strong: #c3c3cc;
@@ -121,6 +121,8 @@ body {
   word-break: keep-all; line-break: strict; overflow-wrap: break-word;
 }
 a { color: var(--link); }
+::selection { background: rgba(82, 102, 235, .22); }
+input, textarea { caret-color: var(--accent); }
 button, input, select { font: inherit; color: inherit; }
 :where(a, button, input, select, summary, [tabindex]):focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
 .vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: -1px; padding: 0; border: 0; }
@@ -186,6 +188,7 @@ body:not([data-view="boards"]) #boards-sheet { display: none; }
 .chip[aria-pressed="true"] .dot { box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .85); }
 .chip.zero { color: var(--ink-3); }
 .chip.zero .n { color: var(--ink-3); }
+.chip.zero[aria-pressed="true"], .chip.zero[aria-pressed="true"] .n { color: var(--on-accent); }
 
 /* ---------- ridge (deadline strip) ---------- */
 .ridge { margin: 24px 0 0; display: grid; grid-template-columns: 52px 1fr; gap: 0 10px; align-items: stretch; }
@@ -249,7 +252,7 @@ body:not([data-view="boards"]) #boards-sheet { display: none; }
 .table-wrap { padding: 0 calc(var(--gut) - 12px) 8px; }
 table.jobs { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; }
 .jobs col.c-star { width: 40px; } .jobs col.c-due { width: 132px; } .jobs col.c-city { width: 58px; } .jobs col.c-cat { width: 82px; }
-.jobs col.c-edu { width: 92px; } .jobs col.c-con { width: 78px; } .jobs col.c-start { width: 92px; } .jobs col.c-pay { width: 96px; } .jobs col.c-src { width: 150px; }
+.jobs col.c-edu { width: 112px; } .jobs col.c-con { width: 78px; } .jobs col.c-start { width: 92px; } .jobs col.c-pay { width: 96px; } .jobs col.c-src { width: 150px; }
 .jobs th, .jobs td { padding: 0 12px; text-align: left; vertical-align: middle; }
 .jobs thead th { position: sticky; top: 0; z-index: 3; background: var(--sheet); height: 42px; border-bottom: 1px solid var(--rule);
   font-size: 12px; font-weight: 400; color: var(--ink-2); white-space: nowrap; }
@@ -268,6 +271,7 @@ tr.job:hover td { background: var(--hover-wash); }
 tr.job.open td { background: var(--open-wash); border-bottom-color: transparent; }
 tr.grp td { padding: 22px 12px 8px; font-size: 12px; color: var(--ink-3); border-bottom: 1px solid var(--rule); }
 tr.grp b { color: var(--ink-2); font-weight: 500; font-size: 13px; margin-right: 8px; }
+tr.grp .boost { margin-left: 12px; color: var(--link); }
 
 .star { width: 32px; height: 32px; display: grid; place-items: center; border: 0; background: none; border-radius: 50%; cursor: pointer; color: var(--rule-strong); margin-left: -6px; }
 .star:hover { color: var(--ink-3); background: var(--tint); }
@@ -297,6 +301,7 @@ tr.job:hover .ttl { text-decoration: underline; text-decoration-color: var(--rul
 .city::before { content: ""; width: 7px; height: 7px; border-radius: 2px; background: var(--c); }
 .cc { --c: var(--city-cc); } .wj { --c: var(--city-wj); }
 .cell-sm { font-size: 13px; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.jobs td > .cell-sm { display: block; max-width: 100%; }
 
 .edu { display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: var(--r-badge); font-size: 12px; white-space: nowrap; background: var(--tint); color: var(--ink-2); }
 .edu.e5 { background: var(--pill-strong-bg); color: var(--pill-strong-fg); font-weight: 500; }
@@ -304,7 +309,8 @@ tr.job:hover .ttl { text-decoration: underline; text-decoration-color: var(--rul
 .edu.e0 { background: none; padding: 0; color: var(--ink-3); }
 .dash { color: var(--ink-3); }
 /* 내 조건: 학력 칸 안에서만 표시 (새 열을 만들지 않는다) */
-.fit { position: relative; display: inline-flex; vertical-align: middle; }
+.fit { position: relative; display: inline-flex; vertical-align: middle; max-width: calc(100% - 6px); }
+.jobs td.c-edu .edu { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
 .fit .mk { position: absolute; top: -5px; right: -6px; width: 12px; height: 12px; border-radius: 50%; background: var(--sheet); color: var(--accent); }
 .fit .mk svg { display: block; width: 12px; height: 12px; }
 .edu.miss { background: none; box-shadow: inset 0 0 0 1px var(--rule); color: var(--ink-3); font-weight: 400; text-decoration: line-through; text-decoration-color: var(--ink-3); }
@@ -483,7 +489,7 @@ table.orgt, table.atab { width: 100%; border-collapse: separate; border-spacing:
 /* ---------- wide screens: 넓은 모니터에서 열 간격·상세 패널도 넓게 ---------- */
 @media (min-width: 1600px) {
   .jobs col.c-due { width: 140px; } .jobs col.c-city { width: 70px; } .jobs col.c-cat { width: 100px; }
-  .jobs col.c-edu { width: 110px; } .jobs col.c-con { width: 120px; } .jobs col.c-start { width: 112px; } .jobs col.c-pay { width: 120px; } .jobs col.c-src { width: 190px; }
+  .jobs col.c-edu { width: 116px; } .jobs col.c-con { width: 120px; } .jobs col.c-start { width: 112px; } .jobs col.c-pay { width: 120px; } .jobs col.c-src { width: 190px; }
   tr.detail td { padding-left: calc(40px + 140px + 12px); }
 }
 
@@ -531,7 +537,7 @@ table.orgt, table.atab { width: 100%; border-collapse: separate; border-spacing:
   .orgt td.c-m { grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); }
   .orgt td.c-pk, .orgt td.c-last { display: none; }
   .m-peak { display: inline; }
-  .orgt .on { min-height: 32px; display: flex; align-items: center; }
+  .orgt .on { min-height: 32px; padding: 5px 0; white-space: normal; line-height: 1.5; }
   .atab tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 12px 0; border-bottom: 1px solid var(--rule-soft); }
   .atab td { padding: 0; border: 0; }
   .atab td.a-t { grid-column: 1; grid-row: 1; }
@@ -550,12 +556,14 @@ table.orgt, table.atab { width: 100%; border-collapse: separate; border-spacing:
   .lead h2 { font-size: 19px; font-weight: 400; line-height: 1.5; }
   .chips { gap: 6px; margin: 16px calc(-1 * var(--gut)) 0; padding: 0 var(--gut) 2px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
   .chips::-webkit-scrollbar { display: none; }
+  .chips { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); padding-right: 28px; }
   .chip { flex: none; }
   .chip { min-height: 44px; font-size: 13px; padding: 0 14px 0 12px; }
   .ridge { display: none; }
   .filters { margin-top: 16px; padding-top: 12px; padding-bottom: 12px; gap: 8px; }
   .seg label { min-height: 38px; padding: 0 14px; }
   .search { flex: 1 1 100%; order: 3; }
+  .reset { order: 5; margin-left: auto; min-height: 40px; }
   .search input, .sel select { font-size: 16px; min-height: 44px; }
   .more-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 16px; border: 0; border-radius: var(--r-btn); background: var(--tint); font-size: 14px; cursor: pointer; margin-left: auto; }
   .more-btn[aria-expanded="true"] { background: var(--accent-tint); }
@@ -583,6 +591,7 @@ table.orgt, table.atab { width: 100%; border-collapse: separate; border-spacing:
   .m-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 10px; margin-top: 6px; font-size: 13px; color: var(--ink-2); }
   .m-meta .o { min-width: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .m-meta .pay { font-size: 13px; }
+  .m-meta .city { font-size: 13px; color: var(--ink-2); margin-right: 8px; vertical-align: top; }
   .m-meta .edu { height: 20px; font-size: 12px; }
   tr.grp { display: block; }
   tr.grp td { display: block; padding: 20px 0 8px; }
@@ -1150,7 +1159,7 @@ function rowHTML(j) {
     <td class="c-title">
       <div class="ttl-line">${isNew(j) ? `<span class="new">새</span>` : ""}<button type="button" class="ttl" aria-expanded="${open}" aria-controls="d-${esc(j.id)}" title="${esc(j.title)}">${esc(shortTitle(j))}</button></div>
       <div class="org"><span class="org-n">${esc(j.org)}</span>${fitLine(j)}${d.summary ? `<span class="summ">${esc(d.summary)}</span>` : ""}</div>
-      <div class="m-meta"><span class="o">${esc(j.org)}</span>${eduRank(j) >= 0 ? eduFit(j) : ""}${p.monthly != null ? `<span class="pay">${esc(p.label)}</span>` : ""}${fitLine(j)}</div>
+      <div class="m-meta"><span class="o"><span class="city ${cityCls}">${esc(j.city)}</span>${esc(j.org)}</span>${eduRank(j) >= 0 ? eduFit(j) : ""}${p.monthly != null ? `<span class="pay">${esc(p.label)}</span>` : ""}${fitLine(j)}</div>
     </td>
     <td class="c-city"><span class="city ${cityCls}">${esc(j.city)}</span></td>
     ${WIDE ? `<td class="c-cat"><span class="cell-sm" title="${esc(catOf(j))}">${esc(catOf(j) === "기타" ? "행정·기타" : catOf(j))}</span></td>` : ""}
@@ -1188,7 +1197,7 @@ function detailRow(j) {
   const add = (label, html, wide) => { if (html) F.push(`<div${wide ? ' class="wide"' : ""}><dt>${label}</dt><dd>${html}</dd></div>`); };
   if (d.summary) add("업무 요약", `<span class="lead-sum">${esc(d.summary)}</span>`, true);
   add("내 조건과 비교", compareHTML(j), true);
-  if (d.education) add("학력 요건", `${eduPill(j)}${d.education_note ? ` <span class="muted">${esc(val(d.education_note))}</span>` : ""}`);
+  if (d.education) add("학력 요건", `${eduPill(j)}${d.education_note ? ` <span class="muted">${esc(val(d.education_note))}</span>` : ""}`, val(d.education_note).length > 40);
   add("전공", esc(val(d.major)));
   add("경력", [esc(val(d.experience)), d.experience_note ? `<span class="muted">${esc(val(d.experience_note))}</span>` : ""].filter(Boolean).join(" "));
   add("계약 기간", esc(val(d.contract)) || (has ? "" : esc(j.employment_type)));
@@ -1246,13 +1255,14 @@ function renderTable(list) {
     return;
   }
   const grouping = st.sortKey === "deadline" && st.sortDir > 0;
-  let html = "", last = null;
+  const boost = grouping && profile && profile.keywords.length;   // sorted() 와 같은 조건: 묶음 안에서 키워드 일치를 위로
+  let html = "", last = null, boostShown = false;
   const counts = {};
   if (grouping) list.forEach(j => { const g = groupOf(j); counts[g] = (counts[g] || 0) + 1; });
   for (const j of list) {
     if (grouping) {
       const g = groupOf(j);
-      if (g !== last) { html += `<tr class="grp"><td colspan="${NCOL}"><b>${g}</b>${counts[g]}건</td></tr>`; last = g; }
+      if (g !== last) { html += `<tr class="grp"><td colspan="${NCOL}"><b>${g}</b>${counts[g]}건${boost && !boostShown && list.some(x => groupOf(x) === g && kwHit(x)) && (boostShown = true) ? `<span class="boost">묶음마다 내 키워드 일치 공고를 먼저 보여요</span>` : ""}</td></tr>`; last = g; }
     }
     html += rowHTML(j);
   }
@@ -1331,7 +1341,8 @@ function render() {
   renderTable(list);
   // filter UI sync
   ["cat", "org", "edu"].forEach(k => $("#f-" + k).classList.toggle("set", !!st[k]));
-  const active = [st.city, st.cat, st.org, st.edu, st.q, st.pay, st.quick, st.day].filter(Boolean).length;
+  // 관심 탭에서는 관심(quick=star)이 보기 자체라 '필터'로 세지 않는다
+  const active = [st.city, st.cat, st.org, st.edu, st.q, st.pay, st.quick === "star" ? null : st.quick, st.day].filter(Boolean).length;
   $("#reset").hidden = !active;
   const moreN = [st.cat, st.org, st.edu, st.pay, !st.etc].filter(Boolean).length;
   $("#more-n").textContent = moreN ? ` ${moreN}` : "";
@@ -1407,7 +1418,7 @@ document.addEventListener("click", e => {
   }
 });
 function clearFilters() {
-  Object.assign(st, { city: "", cat: "", org: "", edu: "", q: "", pay: false, quick: null, day: null });
+  Object.assign(st, { city: "", cat: "", org: "", edu: "", q: "", pay: false, quick: st.quick === "star" ? "star" : null, day: null });
   $("#c-all").checked = true; ["cat", "org", "edu"].forEach(k => $("#f-" + k).value = ""); $("#f-q").value = ""; $("#f-pay").checked = false;
 }
 $("#f-city").addEventListener("change", e => { st.city = e.target.value; render(); });
