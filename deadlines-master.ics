@@ -16,70 +16,8 @@ DTSTART:19700101T000000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:0254476e@chuncheon-wonju-jobs
-DTSTAMP:20261027T091553Z
-DTSTART;VALUE=DATE:20261027
-DTEND;VALUE=DATE:20261028
-SUMMARY:[마감] 한림대학교 AI융합연구원 연구교수(비전임) 
- 채용(디지털헬스케어·사회안전) · 한림대학교 AI융합연
- 구원
-DESCRIPTION:기관: 한림대학교 AI융합연구원\n지역: 춘천\n직
- 종: 연구직\n학력: 박사\n마감시각: 2026-10-27 (시각 미기재
- )\n원문: https://www.hallym.ac.kr/bbs/hallym/151/391383/artclView.do
-URL:https://www.hallym.ac.kr/bbs/hallym/151/391383/artclView.do
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: 한림대학교 AI융합연구원 연구교수(
- 비전임) 채용(디지털헬스케어·사회안전)
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:bc5220e5@chuncheon-wonju-jobs
-DTSTAMP:20261027T091553Z
-DTSTART;TZID=Asia/Seoul:20261027T160000
-DTEND;TZID=Asia/Seoul:20261027T170000
-SUMMARY:[마감] 2026-47 연구직(연구교수) 채용 – 인공지능 
- 연구·개발 · 강원대학교병원
-DESCRIPTION:기관: 강원대학교병원\n지역: 춘천\n직종: 연구
- 직\n학력: 박사\n월급: 월 625.0만원\n마감시각: 17:00\n원문:
-  https://www.knuh.or.kr/hospitalinfo/hospitalinfo_03_05_view.asp?bid=5&pag
- e=1&idx=34217
-URL:https://www.knuh.or.kr/hospitalinfo/hospitalinfo_03_05_view.asp?bid=5&p
- age=1&idx=34217
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: 2026-47 연구직(연구교수) 채용 – 인
- 공지능 연구·개발
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:d046a5f5@chuncheon-wonju-jobs
-DTSTAMP:20261027T091553Z
-DTSTART;TZID=Asia/Seoul:20261027T160000
-DTEND;TZID=Asia/Seoul:20261027T170000
-SUMMARY:[마감] 연세대학교(미래) 교육전문연구원 채용(미
- 래대학혁신지원사업단\, 2026년 2차) · 연세대학교 미래
- 캠퍼스 미래대학혁신지원사업단
-DESCRIPTION:기관: 연세대학교 미래캠퍼스 미래대학혁신지
- 원사업단\n지역: 원주\n직종: 연구직\n학력: 석사 이상\n
- 월급: 월 265.3만원\n마감시각: 17:00\n원문: https://www.yonsei.a
- c.kr/bbs/wj/112/944383/artclView.do
-URL:https://www.yonsei.ac.kr/bbs/wj/112/944383/artclView.do
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: 연세대학교(미래) 교육전문연구원 
- 채용(미래대학혁신지원사업단\, 2026년 2차)
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:afbc768a@chuncheon-wonju-jobs
-DTSTAMP:20261027T091553Z
+DTSTAMP:20261028T091933Z
 DTSTART;TZID=Asia/Seoul:20261028T225900
 DTEND;TZID=Asia/Seoul:20261028T235900
 SUMMARY:[마감] 한라대학교 2026학년도 2학기 비전임교원(특
@@ -100,7 +38,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:0d1bc357@chuncheon-wonju-jobs
-DTSTAMP:20261027T091553Z
+DTSTAMP:20261028T091933Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:[마감] (주)메디안디노스틱 기업부설연구소(분자진
@@ -121,7 +59,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:9f3fd1a3@chuncheon-wonju-jobs
-DTSTAMP:20261027T091553Z
+DTSTAMP:20261028T091933Z
 DTSTART;TZID=Asia/Seoul:20261030T150000
 DTEND;TZID=Asia/Seoul:20261030T160000
 SUMMARY:[마감] 한림대학교 2027학년도 1학기 전임교원 공개
@@ -140,7 +78,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:c615169b@chuncheon-wonju-jobs
-DTSTAMP:20261027T091553Z
+DTSTAMP:20261028T091933Z
 DTSTART;TZID=Asia/Seoul:20261030T225900
 DTEND;TZID=Asia/Seoul:20261030T235900
 SUMMARY:[마감] 이엘메드(주) 신약개발 벤처회사 연구원 채
@@ -159,7 +97,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:071d20d5@chuncheon-wonju-jobs
-DTSTAMP:20261027T091553Z
+DTSTAMP:20261028T091933Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:[마감] 한림대학교 뇌혈관질환 선도연구센터 연구
@@ -179,7 +117,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:cdb22308@chuncheon-wonju-jobs
-DTSTAMP:20261027T091553Z
+DTSTAMP:20261028T091933Z
 DTSTART;TZID=Asia/Seoul:20261103T160000
 DTEND;TZID=Asia/Seoul:20261103T170000
 SUMMARY:[마감] 연세대학교(미래) 교육전문연구원 채용(미
@@ -199,11 +137,12 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:658d4b68@chuncheon-wonju-jobs
-DTSTAMP:20261027T091553Z
+DTSTAMP:20261028T091933Z
 DTSTART;TZID=Asia/Seoul:20261106T170000
 DTEND;TZID=Asia/Seoul:20261106T180000
 SUMMARY:[마감] 2027학년도 1학기 강원대학교 교수 초빙(전 
- 캠퍼스\, 공고 제2026-333호) · 강원대학교(교무혁신과)
+ 캠퍼스\, 공고 제2026-333호\, 정정) · 강원대학교(교무혁
+ 신과)
 DESCRIPTION:기관: 강원대학교(교무혁신과)\n지역: 춘천\n직
  종: 강사/교원\n학력: 박사\n마감시각: 18:00\n원문: https://w
  ww.kangwon.ac.kr/ko/bbs/716/detail.do?pstSn=5191
@@ -212,13 +151,13 @@ TRANSP:TRANSPARENT
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:내일 마감: 2027학년도 1학기 강원대학교 교수 초
- 빙(전 캠퍼스\, 공고 제2026-333호)
+ 빙(전 캠퍼스\, 공고 제2026-333호\, 정정)
 TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:eb3f28e3@chuncheon-wonju-jobs
-DTSTAMP:20261027T091553Z
+DTSTAMP:20261028T091933Z
 DTSTART;TZID=Asia/Seoul:20261109T140000
 DTEND;TZID=Asia/Seoul:20261109T150000
 SUMMARY:[마감] 2026년도 제3차 국민건강보험공단 전문인력 
@@ -237,7 +176,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:2825a6ff@chuncheon-wonju-jobs
-DTSTAMP:20261027T091553Z
+DTSTAMP:20261028T091933Z
 DTSTART;TZID=Asia/Seoul:20261111T170000
 DTEND;TZID=Asia/Seoul:20261111T180000
 SUMMARY:[마감] 춘천교육대학교 2027학년도 1학기 교수초빙(
@@ -256,7 +195,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:87cb4ae9@chuncheon-wonju-jobs
-DTSTAMP:20261027T091553Z
+DTSTAMP:20261028T091933Z
 DTSTART;VALUE=DATE:20261119
 DTEND;VALUE=DATE:20261120
 SUMMARY:[마감] 기업부설연구소 연구소장 채용 · 주식회사 
@@ -275,7 +214,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:1d84bdc2@chuncheon-wonju-jobs
-DTSTAMP:20261027T091553Z
+DTSTAMP:20261028T091933Z
 DTSTART;TZID=Asia/Seoul:20261125T225900
 DTEND;TZID=Asia/Seoul:20261125T235900
 SUMMARY:[마감] 합성연구센터 연구원 채용공고 · (주)케이
@@ -293,7 +232,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:de20c4de@chuncheon-wonju-jobs
-DTSTAMP:20261027T091553Z
+DTSTAMP:20261028T091933Z
 DTSTART;VALUE=DATE:20271231
 DTEND;VALUE=DATE:20280101
 SUMMARY:[마감] 강원대학교 빅데이터메디컬융합교육연구단
