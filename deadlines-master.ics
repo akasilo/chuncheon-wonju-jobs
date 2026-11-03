@@ -16,66 +16,8 @@ DTSTART:19700101T000000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:9f3fd1a3@chuncheon-wonju-jobs
-DTSTAMP:20261030T091459Z
-DTSTART;TZID=Asia/Seoul:20261030T150000
-DTEND;TZID=Asia/Seoul:20261030T160000
-SUMMARY:[마감] 한림대학교 2027학년도 1학기 전임교원 공개
- 초빙(총 30명) · 한림대학교
-DESCRIPTION:기관: 한림대학교\n지역: 춘천\n직종: 강사/교원\
- n학력: 박사\n마감시각: 16:00\n원문: https://www.hallym.ac.kr/bbs
- /hallym/151/391198/artclView.do
-URL:https://www.hallym.ac.kr/bbs/hallym/151/391198/artclView.do
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: 한림대학교 2027학년도 1학기 전임교
- 원 공개초빙(총 30명)
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:c615169b@chuncheon-wonju-jobs
-DTSTAMP:20261030T091459Z
-DTSTART;TZID=Asia/Seoul:20261030T225900
-DTEND;TZID=Asia/Seoul:20261030T235900
-SUMMARY:[마감] 이엘메드(주) 신약개발 벤처회사 연구원 채
- 용 · 이엘메드(주)
-DESCRIPTION:기관: 이엘메드(주)\n지역: 춘천\n직종: 연구직\n
- 학력: 석사 이상\n마감시각: 24:00\n원문: https://www.saramin.co
- .kr/zf_user/jobs/relay/view?rec_idx=54899710
-URL:https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=54899710
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: 이엘메드(주) 신약개발 벤처회사 연
- 구원 채용
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:071d20d5@chuncheon-wonju-jobs
-DTSTAMP:20261030T091459Z
-DTSTART;VALUE=DATE:20261031
-DTEND;VALUE=DATE:20261101
-SUMMARY:[마감] 한림대학교 뇌혈관질환 선도연구센터 연구
- 교수 및 석사급 연구원 채용 · 한림대학교 뇌혈관질환 
- 선도연구센터
-DESCRIPTION:기관: 한림대학교 뇌혈관질환 선도연구센터\n지
- 역: 춘천\n직종: 연구직\n학력: 석사 이상\n원문: https://www
- .hibrain.net/recruitment/recruits/3601318
-URL:https://www.hibrain.net/recruitment/recruits/3601318
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: 한림대학교 뇌혈관질환 선도연구센
- 터 연구교수 및 석사급 연구원 채용
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:cdb22308@chuncheon-wonju-jobs
-DTSTAMP:20261030T091459Z
+DTSTAMP:20261103T043526Z
 DTSTART;TZID=Asia/Seoul:20261103T160000
 DTEND;TZID=Asia/Seoul:20261103T170000
 SUMMARY:[마감] 연세대학교(미래) 교육전문연구원 채용(미
@@ -95,7 +37,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:658d4b68@chuncheon-wonju-jobs
-DTSTAMP:20261030T091459Z
+DTSTAMP:20261103T043526Z
 DTSTART;TZID=Asia/Seoul:20261106T170000
 DTEND;TZID=Asia/Seoul:20261106T180000
 SUMMARY:[마감] 2027학년도 1학기 강원대학교 교수 초빙(전 
@@ -115,7 +57,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:eb3f28e3@chuncheon-wonju-jobs
-DTSTAMP:20261030T091459Z
+DTSTAMP:20261103T043526Z
 DTSTART;TZID=Asia/Seoul:20261109T140000
 DTEND;TZID=Asia/Seoul:20261109T150000
 SUMMARY:[마감] 2026년도 제3차 국민건강보험공단 전문인력 
@@ -133,8 +75,27 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:7807b5b3@chuncheon-wonju-jobs
+DTSTAMP:20261103T043526Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
+SUMMARY:[마감] 한림대학교 AI융합연구원 연구교수(비전임) 
+ 채용(디지털헬스케어) · 한림대학교 AI융합연구원
+DESCRIPTION:기관: 한림대학교 AI융합연구원\n지역: 춘천\n직
+ 종: 연구직\n학력: 박사\n원문: https://www.hallym.ac.kr/bbs/hally
+ m/151/391939/artclView.do
+URL:https://www.hallym.ac.kr/bbs/hallym/151/391939/artclView.do
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 한림대학교 AI융합연구원 연구교수(
+ 비전임) 채용(디지털헬스케어)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:2825a6ff@chuncheon-wonju-jobs
-DTSTAMP:20261030T091459Z
+DTSTAMP:20261103T043526Z
 DTSTART;TZID=Asia/Seoul:20261111T170000
 DTEND;TZID=Asia/Seoul:20261111T180000
 SUMMARY:[마감] 춘천교육대학교 2027학년도 1학기 교수초빙(
@@ -152,8 +113,67 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:69fb3706@chuncheon-wonju-jobs
+DTSTAMP:20261103T043526Z
+DTSTART;TZID=Asia/Seoul:20261113T150000
+DTEND;TZID=Asia/Seoul:20261113T160000
+SUMMARY:[마감] 국민건강보험공단 건강보험연구원 초빙연
+ 구위원 모집 · 국민건강보험공단 건강보험연구원
+DESCRIPTION:기관: 국민건강보험공단 건강보험연구원\n지역:
+  원주\n직종: 연구직\n학력: 석사 이상\n마감시각: 16:00\n
+ 원문: https://www.hibrain.net/recruitment/recruits/3604398
+URL:https://www.hibrain.net/recruitment/recruits/3604398
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 국민건강보험공단 건강보험연구원 
+ 초빙연구위원 모집
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:d0ff96ff@chuncheon-wonju-jobs
+DTSTAMP:20261103T043526Z
+DTSTART;TZID=Asia/Seoul:20261115T170000
+DTEND;TZID=Asia/Seoul:20261115T180000
+SUMMARY:[마감] 강원대학교 G-LAMP사업단 포닥(박사후연구원)
+  채용(다차원유전체연구소\, 6명) · 강원대학교 G-LAMP사
+ 업단(다차원유전체연구소)
+DESCRIPTION:기관: 강원대학교 G-LAMP사업단(다차원유전체연
+ 구소)\n지역: 춘천\n직종: 연구직\n학력: 박사\n월급: 월 45
+ 8.3만원\n마감시각: 18:00\n원문: https://www.kangwon.ac.kr/ko/bbs/7
+ 16/detail.do?pstSn=5215
+URL:https://www.kangwon.ac.kr/ko/bbs/716/detail.do?pstSn=5215
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 강원대학교 G-LAMP사업단 포닥(박사후
+ 연구원) 채용(다차원유전체연구소\, 6명)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bd041013@chuncheon-wonju-jobs
+DTSTAMP:20261103T043526Z
+DTSTART;TZID=Asia/Seoul:20261116T150000
+DTEND;TZID=Asia/Seoul:20261116T160000
+SUMMARY:[마감] 한림대학교 2027학년도 의학과 전임교원 특
+ 별초빙(정보의학) · 한림대학교 의과대학
+DESCRIPTION:기관: 한림대학교 의과대학\n지역: 춘천\n직종: 
+ 강사/교원\n학력: 박사\n마감시각: 16:00\n원문: https://www.ha
+ llym.ac.kr/bbs/hallym/151/391921/artclView.do
+URL:https://www.hallym.ac.kr/bbs/hallym/151/391921/artclView.do
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 한림대학교 2027학년도 의학과 전임
+ 교원 특별초빙(정보의학)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:87cb4ae9@chuncheon-wonju-jobs
-DTSTAMP:20261030T091459Z
+DTSTAMP:20261103T043526Z
 DTSTART;VALUE=DATE:20261119
 DTEND;VALUE=DATE:20261120
 SUMMARY:[마감] 기업부설연구소 연구소장 채용 · 주식회사 
@@ -172,7 +192,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:dd466836@chuncheon-wonju-jobs
-DTSTAMP:20261030T091459Z
+DTSTAMP:20261103T043526Z
 DTSTART;TZID=Asia/Seoul:20261120T100000
 DTEND;TZID=Asia/Seoul:20261120T110000
 SUMMARY:[마감] 한림대학교 한국영양연구소 박사후 연구원 
@@ -192,7 +212,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:1d84bdc2@chuncheon-wonju-jobs
-DTSTAMP:20261030T091459Z
+DTSTAMP:20261103T043526Z
 DTSTART;TZID=Asia/Seoul:20261125T225900
 DTEND;TZID=Asia/Seoul:20261125T235900
 SUMMARY:[마감] 합성연구센터 연구원 채용공고 · (주)케이
@@ -209,8 +229,26 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:74275661@chuncheon-wonju-jobs
+DTSTAMP:20261103T043526Z
+DTSTART;VALUE=DATE:20261228
+DTEND;VALUE=DATE:20261229
+SUMMARY:[마감] [삼양식품] 스프 개발 연구원 · 삼양식품(주
+ )
+DESCRIPTION:기관: 삼양식품(주)\n지역: 원주\n직종: 연구직\n
+ 학력: 석사 이상\n원문: https://www.jobkorea.co.kr/Recruit/GI_Read/
+ 50263195
+URL:https://www.jobkorea.co.kr/Recruit/GI_Read/50263195
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: [삼양식품] 스프 개발 연구원
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:de20c4de@chuncheon-wonju-jobs
-DTSTAMP:20261030T091459Z
+DTSTAMP:20261103T043526Z
 DTSTART;VALUE=DATE:20271231
 DTEND;VALUE=DATE:20280101
 SUMMARY:[마감] 강원대학교 빅데이터메디컬융합교육연구단
