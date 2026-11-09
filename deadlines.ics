@@ -16,253 +16,8 @@ DTSTART:19700101T000000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:03c6d661@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
-DTSTART;TZID=Asia/Seoul:20261106T170000
-DTEND;TZID=Asia/Seoul:20261106T180000
-SUMMARY:[마감] 강원특별자치도 공무직 사업실무원(농업기
- 술원 작물연구과) 1명 · 강원특별자치도농업기술원 작
- 물연구과
-DESCRIPTION:기관: 강원특별자치도농업기술원 작물연구과\n
- 지역: 춘천\n직종: 연구직\n학력: 무관\n월급: 월 208만원\n
- 마감시각: 18:00\n원문: https://state.gwd.go.kr/portal/bulletin/recru
- itment?articleSeq=272813&mode=readForm
-URL:https://state.gwd.go.kr/portal/bulletin/recruitment?articleSeq=272813&m
- ode=readForm
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: 강원특별자치도 공무직 사업실무원(
- 농업기술원 작물연구과) 1명
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:52a8ab59@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
-DTSTART;TZID=Asia/Seoul:20261106T160000
-DTEND;TZID=Asia/Seoul:20261106T170000
-SUMMARY:[마감] 연세대학교 미래의료산학협력단 산하기관 
- 연구원(계약직) 채용 (AX사업 행정 분야) · 연세대학교 
- 미래의료산학협력단
-DESCRIPTION:기관: 연세대학교 미래의료산학협력단\n지역: 
- 원주\n직종: 기타\n학력: 학사 이상\n마감시각: 17:00\n원문
- : https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=55467415
-URL:https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=55467415
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: 연세대학교 미래의료산학협력단 산
- 하기관 연구원(계약직) 채용 (AX사업 행정 분야)
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:658d4b68@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
-DTSTART;TZID=Asia/Seoul:20261106T170000
-DTEND;TZID=Asia/Seoul:20261106T180000
-SUMMARY:[마감] 2027학년도 1학기 강원대학교 교수 초빙(전 
- 캠퍼스\, 공고 제2026-333호\, 정정) · 강원대학교(교무혁
- 신과)
-DESCRIPTION:기관: 강원대학교(교무혁신과)\n지역: 춘천\n직
- 종: 강사/교원\n학력: 박사\n마감시각: 18:00\n원문: https://w
- ww.kangwon.ac.kr/ko/bbs/716/detail.do?pstSn=5191
-URL:https://www.kangwon.ac.kr/ko/bbs/716/detail.do?pstSn=5191
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: 2027학년도 1학기 강원대학교 교수 초
- 빙(전 캠퍼스\, 공고 제2026-333호\, 정정)
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:bdaaddb4@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
-DTSTART;TZID=Asia/Seoul:20261106T160000
-DTEND;TZID=Asia/Seoul:20261106T170000
-SUMMARY:[마감] 춘천성심병원 연구전담팀 연구간호사(계약
- 직) 채용 공고 · 한림대학교 춘천성심병원
-DESCRIPTION:기관: 한림대학교 춘천성심병원\n지역: 춘천\n직
- 종: 연구직\n학력: 전문학사 이상\n마감시각: 2026-11-06 17:0
- 0\n원문: https://recruit.hallym.or.kr/hrt_p20_detail.jsp?locate=5&adoptc
- nt=266&inggbn=ing&adoptyy=2026&innlist=1
-URL:https://recruit.hallym.or.kr/hrt_p20_detail.jsp?locate=5&adoptcnt=266&i
- nggbn=ing&adoptyy=2026&innlist=1
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: 춘천성심병원 연구전담팀 연구간호
- 사(계약직) 채용 공고
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:09060a27@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
-DTSTART;TZID=Asia/Seoul:20261107T225900
-DTEND;TZID=Asia/Seoul:20261107T235900
-SUMMARY:[마감] ㈜이노백 2026년 학/석사급 연구원 채용 · (
- 주)이노백
-DESCRIPTION:기관: (주)이노백\n지역: 춘천\n직종: 연구직\n학
- 력: 학사 이상\n마감시각: 24:00\n원문: https://www.saramin.co.kr
- /zf_user/jobs/relay/view?rec_idx=55241967
-URL:https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=55241967
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: ㈜이노백 2026년 학/석사급 연구원 채
- 용
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:0c574d81@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
-DTSTART;TZID=Asia/Seoul:20261108T120000
-DTEND;TZID=Asia/Seoul:20261108T130000
-SUMMARY:[마감] 경동대학교 KDU앵커 사업단 직원 모집 · 경
- 동대학교 산학협력단
-DESCRIPTION:기관: 경동대학교 산학협력단\n지역: 원주\n직종
- : 기타\n학력: 전문학사 이상\n월급: 월 250만원\n마감시각
- : 13:00\n원문: https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do
- ?wantedAuthNo=KJLJ002610280001&infoTypeCd=VALIDATION&infoTypeGroup=tb_work
- infoworknet
-URL:https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=
- KJLJ002610280001&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: 경동대학교 KDU앵커 사업단 직원 모
- 집
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:13312f84@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
-DTSTART;TZID=Asia/Seoul:20261108T170000
-DTEND;TZID=Asia/Seoul:20261108T180000
-SUMMARY:[마감] 한림대학교 창업지원본부 전담사업 직원 채
- 용 · 한림대학교 산학협력단 창업지원본부
-DESCRIPTION:기관: 한림대학교 산학협력단 창업지원본부\n지
- 역: 춘천\n직종: 기타\n학력: 전문학사 이상\n마감시각: 18
- :00\n원문: https://www.hallym.ac.kr/bbs/hallym/151/391922/artclView.do
-URL:https://www.hallym.ac.kr/bbs/hallym/151/391922/artclView.do
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: 한림대학교 창업지원본부 전담사업 
- 직원 채용
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:2cd3db31@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
-DTSTART;TZID=Asia/Seoul:20261108T150000
-DTEND;TZID=Asia/Seoul:20261108T160000
-SUMMARY:[마감] 연세대학교 미래캠퍼스 프로젝트계약직(앵
- 커사업단) 채용 · 연세대학교 미래캠퍼스 앵커사업단 
- 산학협력센터
-DESCRIPTION:기관: 연세대학교 미래캠퍼스 앵커사업단 산학
- 협력센터\n지역: 원주\n직종: 기타\n학력: 학사 이상\n월
- 급: 월 250만원\n마감시각: 16:00\n원문: https://www.yonsei.ac.kr/
- bbs/wj/112/944429/artclView.do
-URL:https://www.yonsei.ac.kr/bbs/wj/112/944429/artclView.do
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: 연세대학교 미래캠퍼스 프로젝트계
- 약직(앵커사업단) 채용
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:688ebdf8@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
-DTSTART;TZID=Asia/Seoul:20261108T150000
-DTEND;TZID=Asia/Seoul:20261108T160000
-SUMMARY:[마감] 연세대학교 미래캠퍼스 프로젝트계약직(미
- 래대학혁신지원사업단) 채용 · 연세대학교 미래캠퍼스 
- 미래대학혁신지원사업단
-DESCRIPTION:기관: 연세대학교 미래캠퍼스 미래대학혁신지
- 원사업단\n지역: 원주\n직종: 기타\n학력: 학사 이상\n월
- 급: 월 250만원\n마감시각: 16:00\n원문: https://www.yonsei.ac.kr/
- bbs/wj/112/944427/artclView.do
-URL:https://www.yonsei.ac.kr/bbs/wj/112/944427/artclView.do
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: 연세대학교 미래캠퍼스 프로젝트계
- 약직(미래대학혁신지원사업단) 채용
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:a49bd475@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
-DTSTART;VALUE=DATE:20261108
-DTEND;VALUE=DATE:20261109
-SUMMARY:[마감] 경동대학교 KDU 앵커사업단 전담 직원 모집(
- 원주\, 3명) · 경동대학교 앵커사업단(산학협력단)
-DESCRIPTION:기관: 경동대학교 앵커사업단(산학협력단)\n지
- 역: 원주\n직종: 기타\n학력: 전문학사 이상\n원문: https://
- www.kduniv.ac.kr/kor/CMS/Board/Board.do?mCode=MN287&mode=view&mgr_seq=512&
- board_seq=73289
-URL:https://www.kduniv.ac.kr/kor/CMS/Board/Board.do?mCode=MN287&mode=view&m
- gr_seq=512&board_seq=73289
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: 경동대학교 KDU 앵커사업단 전담 직
- 원 모집(원주\, 3명)
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:d246cb72@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
-DTSTART;TZID=Asia/Seoul:20261108T150000
-DTEND;TZID=Asia/Seoul:20261108T160000
-SUMMARY:[마감] 연세대(미래) 프로젝트계약직(앵커사업단 
- 산학협력센터) 채용 · 연세대학교 미래캠퍼스
-DESCRIPTION:기관: 연세대학교 미래캠퍼스\n지역: 원주\n직종
- : 기타\n학력: 학사 이상\n월급: 월 250만원\n마감시각: 16:0
- 0\n원문: https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=55396
- 797
-URL:https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=55396797
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: 연세대(미래) 프로젝트계약직(앵커
- 사업단 산학협력센터) 채용
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:e4db71cd@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
-DTSTART;TZID=Asia/Seoul:20261108T170000
-DTEND;TZID=Asia/Seoul:20261108T180000
-SUMMARY:[마감] 한라대학교 앵커사업단 계약직원(연구원\, 
- 행정직원) 채용 · 한라대학교
-DESCRIPTION:기관: 한라대학교\n지역: 원주\n직종: 기타\n학력
- : 학사 이상\n월급: 월 223만원\n마감시각: 18:00\n원문: https
- ://www.halla.ac.kr/bbs/kr/40/210104/artclView.do
-URL:https://www.halla.ac.kr/bbs/kr/40/210104/artclView.do
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: 한라대학교 앵커사업단 계약직원(연
- 구원\, 행정직원) 채용
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:0c1632ee@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261109T140000
 DTEND;TZID=Asia/Seoul:20261109T150000
 SUMMARY:[마감] 한림대학교 글로컬대학30 업무 전담 계약직 
@@ -282,31 +37,8 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:39d818f7@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
-DTSTART;TZID=Asia/Seoul:20261109T225900
-DTEND;TZID=Asia/Seoul:20261109T235900
-SUMMARY:[마감] AI 실무과정 강의 및 직업훈련과정 운영 훈
- 련교사 채용 / 시간강사 · 주식회사 엠아이티능력개발
- 원
-DESCRIPTION:기관: 주식회사 엠아이티능력개발원\n지역: 원
- 주\n직종: 강사/교원\n학력: 무관\n마감시각: 24:00(채용시
- 까지)\n원문: https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do
- ?wantedAuthNo=K152412609110003&infoTypeCd=VALIDATION&infoTypeGroup=tb_work
- infoworknet
-URL:https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=
- K152412609110003&infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet
-TRANSP:TRANSPARENT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마감: AI 실무과정 강의 및 직업훈련과정 
- 운영 훈련교사 채용 / 시간강사
-TRIGGER:-P1D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:52da4ee1@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261109T140000
 DTEND;TZID=Asia/Seoul:20261109T150000
 SUMMARY:[마감] 2026년도 제3차 국민건강보험공단 전문인력 
@@ -327,7 +59,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:84d5d06e@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261109T225900
 DTEND;TZID=Asia/Seoul:20261109T235900
 SUMMARY:[마감] 기후·환경·온실가스·폐기물관리·국제협
@@ -346,7 +78,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:98aba79a@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261109T170000
 DTEND;TZID=Asia/Seoul:20261109T180000
 SUMMARY:[마감] 강원대학교 원격교육센터 기간제 계약직 공
@@ -365,7 +97,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:9f991952@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261109T140000
 DTEND;TZID=Asia/Seoul:20261109T150000
 SUMMARY:[마감] 한림대학교 글로컬대학30 전담 직원 채용(행
@@ -384,7 +116,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:c05c1a96@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261109T170000
 DTEND;TZID=Asia/Seoul:20261109T180000
 SUMMARY:[마감] 2026년 제9회 신규직원 채용 공고 · (재)원주
@@ -404,7 +136,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:eb3f28e3@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261109T140000
 DTEND;TZID=Asia/Seoul:20261109T150000
 SUMMARY:[마감] 2026년도 제3차 국민건강보험공단 전문인력 
@@ -422,8 +154,72 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:2f485ee3@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
+SUMMARY:[마감] 하드웨어 엔지니어 정규직 채용[R&D] · (주)
+ 윈백고이스트
+DESCRIPTION:기관: (주)윈백고이스트\n지역: 원주\n직종: 연구
+ 직\n학력: 학사 이상\n원문: https://www.saramin.co.kr/zf_user/jobs
+ /relay/view?rec_idx=55260367
+URL:https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=55260367
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 하드웨어 엔지니어 정규직 채용[R&D]
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:47c6ffb9@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;TZID=Asia/Seoul:20261110T170000
+DTEND;TZID=Asia/Seoul:20261110T180000
+SUMMARY:[마감] (강원지청 지역통계과)2026년 동해시 일자리
+ 종합실태조사 기간제 근로자(업무보조원) 채용 재공고 
+ · 국가데이터처 동북지방데이터청 강원지방데이터지청
+  지역통계과
+DESCRIPTION:기관: 국가데이터처 동북지방데이터청 강원지
+ 방데이터지청 지역통계과\n지역: 춘천\n직종: 기타\n마감
+ 시각: 18:00\n원문: https://mods.go.kr/board.es?mid=b30201100100&bid=12
+ 198&act=view&list_no=447839&tag=&nPage=1&ref_bid=&mainXml=Y
+URL:https://mods.go.kr/board.es?mid=b30201100100&bid=12198&act=view&list_no
+ =447839&tag=&nPage=1&ref_bid=&mainXml=Y
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: (강원지청 지역통계과)2026년 동해시 
+ 일자리종합실태조사 기간제 근로자(업무보조원) 채용 
+ 재공고
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6bb5201c@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;TZID=Asia/Seoul:20261110T170000
+DTEND;TZID=Asia/Seoul:20261110T180000
+SUMMARY:[마감] 춘천교육대학교 인공지능 활용 선도교사 연
+ 수 사업단 후속연수 기간제 계약직(행정직) 채용 · 춘천
+ 교육대학교 인공지능 활용 선도교사 연수 사업단(산학
+ 협력단)
+DESCRIPTION:기관: 춘천교육대학교 인공지능 활용 선도교사 
+ 연수 사업단(산학협력단)\n지역: 춘천\n직종: 기타\n학력:
+  학사 이상\n월급: 월 260만원\n마감시각: 18:00\n원문: https:
+ //www.cnue.ac.kr/cnue/news/notice04.do?mode=view&articleNo=41952
+URL:https://www.cnue.ac.kr/cnue/news/notice04.do?mode=view&articleNo=41952
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 춘천교육대학교 인공지능 활용 선도
+ 교사 연수 사업단 후속연수 기간제 계약직(행정직) 채용
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:7807b5b3@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;VALUE=DATE:20261110
 DTEND;VALUE=DATE:20261111
 SUMMARY:[마감] 한림대학교 AI융합연구원 연구교수(비전임) 
@@ -442,7 +238,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:152e2db6@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:[마감] 한림대학교 글로벌융합대학 글로컬MICE학과 
@@ -462,7 +258,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:2825a6ff@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261111T170000
 DTEND;TZID=Asia/Seoul:20261111T180000
 SUMMARY:[마감] 춘천교육대학교 2027학년도 1학기 교수초빙(
@@ -481,7 +277,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:6c021b37@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261111T160000
 DTEND;TZID=Asia/Seoul:20261111T170000
 SUMMARY:[마감] 강원대학교 데이터보안·활용 혁신융합대학
@@ -502,7 +298,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:ae5a9877@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261111T225900
 DTEND;TZID=Asia/Seoul:20261111T235900
 SUMMARY:[마감] AI·코딩 교육 기획 및 운영 · (주)아코스쿨
@@ -518,8 +314,27 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:e56e6bbf@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;TZID=Asia/Seoul:20261111T160000
+DTEND;TZID=Asia/Seoul:20261111T170000
+SUMMARY:[마감] 강원대학교 무기계약직 직원 신규채용 · 강
+ 원대학교(총무과)
+DESCRIPTION:기관: 강원대학교(총무과)\n지역: 춘천\n직종: 기
+ 타\n학력: 학사 이상\n월급: 월 250만원\n마감시각: 17:00\n
+ 원문: https://www.kangwon.ac.kr/ko/bbs/716/detail.do?pstSn=5217
+URL:https://www.kangwon.ac.kr/ko/bbs/716/detail.do?pstSn=5217
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 강원대학교 무기계약직 직원 신규채
+ 용
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:effc0e4e@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:[마감] (주)뉴보텍 기술연구소 연구원 채용 (과장급
@@ -537,8 +352,48 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:7311dd24@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;TZID=Asia/Seoul:20261112T170000
+DTEND;TZID=Asia/Seoul:20261112T180000
+SUMMARY:[마감] 한림대학교 인문사회융합인재양성사업(HUSS)
+  육아휴직 대체 인력 채용 · 한림대학교 인문사회 융합
+ 인재양성사업단(산학협력단)
+DESCRIPTION:기관: 한림대학교 인문사회 융합인재양성사업
+ 단(산학협력단)\n지역: 춘천\n직종: 기타\n학력: 학사 이
+ 상\n마감시각: 18:00\n원문: https://www.hallym.ac.kr/bbs/hallym/151/
+ 392085/artclView.do
+URL:https://www.hallym.ac.kr/bbs/hallym/151/392085/artclView.do
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 한림대학교 인문사회융합인재양성
+ 사업(HUSS) 육아휴직 대체 인력 채용
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ac85e029@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;TZID=Asia/Seoul:20261112T170000
+DTEND;TZID=Asia/Seoul:20261112T180000
+SUMMARY:[마감] 한림대학교 AI중심대학 사업 전담사업 직원 
+ 채용 · 한림대학교 산학협력단 AI중심대학 사업단
+DESCRIPTION:기관: 한림대학교 산학협력단 AI중심대학 사업
+ 단\n지역: 춘천\n직종: 기타\n학력: 학사 이상\n마감시각: 
+ 18:00\n원문: https://www.hallym.ac.kr/bbs/hallym/151/392086/artclView.do
+URL:https://www.hallym.ac.kr/bbs/hallym/151/392086/artclView.do
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 한림대학교 AI중심대학 사업 전담사
+ 업 직원 채용
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:4ee0d27e@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261113T160000
 DTEND;TZID=Asia/Seoul:20261113T170000
 SUMMARY:[마감] 연세대학교 미래의료산학협력단 산하기관 
@@ -558,7 +413,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:69fb3706@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261113T150000
 DTEND;TZID=Asia/Seoul:20261113T160000
 SUMMARY:[마감] 국민건강보험공단 건강보험연구원 초빙연
@@ -577,7 +432,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:7188ca5d@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:[마감] [원주] 건강기능식품 임상시험 연구원 채용 
@@ -595,8 +450,49 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:a93657ff@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;TZID=Asia/Seoul:20261113T220000
+DTEND;TZID=Asia/Seoul:20261113T230000
+SUMMARY:[마감] (강원지청 농어업조사과) 2026년 농림어업조
+ 사 기간제근로자 채용 공고 · 국가데이터처 동북지방데
+ 이터청 강원지방데이터지청 농어업조사과
+DESCRIPTION:기관: 국가데이터처 동북지방데이터청 강원지
+ 방데이터지청 농어업조사과\n지역: 춘천\n직종: 기타\n마
+ 감시각: 23:00\n원문: https://www.k-stat.go.kr/npc/npca100/npca100m02?
+ exempPblancNo=2026-3132&prdctnId=2300382&prdctnDsgnTme=010002
+URL:https://www.k-stat.go.kr/npc/npca100/npca100m02?exempPblancNo=2026-3132
+ &prdctnId=2300382&prdctnDsgnTme=010002
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: (강원지청 농어업조사과) 2026년 농림
+ 어업조사 기간제근로자 채용 공고
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:e38fa2a7@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;TZID=Asia/Seoul:20261113T225900
+DTEND;TZID=Asia/Seoul:20261113T235900
+SUMMARY:[마감] (주)메인 회계담당(R&D 과제 및 행정 인력) 채
+ 용 공고 · (주)메인
+DESCRIPTION:기관: (주)메인\n지역: 원주\n직종: 기타\n학력: 
+ 무관\n월급: 월 250만원\n마감시각: 24:00\n원문: https://www.sa
+ ramin.co.kr/zf_user/jobs/relay/view?rec_idx=55504001
+URL:https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=55504001
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: (주)메인 회계담당(R&D 과제 및 행정 
+ 인력) 채용 공고
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:7df7bb80@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261115T170000
 DTEND;TZID=Asia/Seoul:20261115T180000
 SUMMARY:[마감] ㈜강원대학교기술지주회사 직원 채용 공고 
@@ -616,7 +512,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:d0ff96ff@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261115T170000
 DTEND;TZID=Asia/Seoul:20261115T180000
 SUMMARY:[마감] 강원대학교 G-LAMP사업단 포닥(박사후연구원)
@@ -636,8 +532,27 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:ff3a1bed@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;TZID=Asia/Seoul:20261115T170000
+DTEND;TZID=Asia/Seoul:20261115T180000
+SUMMARY:[마감] (주)강원대학교 기술지주회사 직원 채용 · (
+ 주)강원대학교 기술지주회사
+DESCRIPTION:기관: (주)강원대학교 기술지주회사\n지역: 춘천
+ \n직종: 기타\n학력: 무관\n월급: 월 250만원\n마감시각: 18:
+ 00\n원문: https://www.kangwon.ac.kr/ko/bbs/716/detail.do?pstSn=5221
+URL:https://www.kangwon.ac.kr/ko/bbs/716/detail.do?pstSn=5221
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: (주)강원대학교 기술지주회사 직원 
+ 채용
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:001ccf8e@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261116T130000
 DTEND;TZID=Asia/Seoul:20261116T140000
 SUMMARY:[마감] 강원연구원 단기근로자(일용직) 공개채용 
@@ -658,7 +573,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:13172fde@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261116T130000
 DTEND;TZID=Asia/Seoul:20261116T140000
 SUMMARY:[마감] 강원연구원 제6차 프로젝트 계약직 연구원 
@@ -676,8 +591,30 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:4555e852@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;TZID=Asia/Seoul:20261116T170000
+DTEND;TZID=Asia/Seoul:20261116T180000
+SUMMARY:[마감] (원주)2026년 농림어업조사 기간제근로자 채
+ 용공고 · 국가데이터처 동북지방데이터청 강원지방데
+ 이터지청 원주사무소
+DESCRIPTION:기관: 국가데이터처 동북지방데이터청 강원지
+ 방데이터지청 원주사무소\n지역: 원주\n직종: 기타\n마감
+ 시각: 18:00\n원문: https://www.k-stat.go.kr/npc/npca100/npca100m02?exe
+ mpPblancNo=2026-3120&prdctnId=2300382&prdctnDsgnTme=010002
+URL:https://www.k-stat.go.kr/npc/npca100/npca100m02?exempPblancNo=2026-3120
+ &prdctnId=2300382&prdctnDsgnTme=010002
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: (원주)2026년 농림어업조사 기간제근
+ 로자 채용공고
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:bd041013@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261116T150000
 DTEND;TZID=Asia/Seoul:20261116T160000
 SUMMARY:[마감] 한림대학교 2027학년도 의학과 전임교원 특
@@ -695,8 +632,30 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:cd40ca73@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;TZID=Asia/Seoul:20261116T170000
+DTEND;TZID=Asia/Seoul:20261116T180000
+SUMMARY:[마감] 2027년 제1회 원주시 공무직근로자(현업실무
+ 원) - 농업유용미생물배양시설 운영 1명 · 원주시농업기
+ 술센터 농업기술과
+DESCRIPTION:기관: 원주시농업기술센터 농업기술과\n지역: 
+ 원주\n직종: 기타\n학력: 무관\n월급: 월 222.4만원\n마감시
+ 각: 18:00\n원문: https://www.wonju.go.kr/www/selectBbsNttView.do?key=21
+ 6&bbsNo=140&nttNo=495427
+URL:https://www.wonju.go.kr/www/selectBbsNttView.do?key=216&bbsNo=140&nttNo
+ =495427
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 2027년 제1회 원주시 공무직근로자(현
+ 업실무원) - 농업유용미생물배양시설 운영 1명
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:dfbca93a@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261116T170000
 DTEND;TZID=Asia/Seoul:20261116T180000
 SUMMARY:[마감] 강원대학교 산학협력단 직원(정규직&기간제
@@ -714,8 +673,49 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:f4b8b0d2@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;TZID=Asia/Seoul:20261116T170000
+DTEND;TZID=Asia/Seoul:20261116T180000
+SUMMARY:[마감] 강원대학교 산학협력단(춘천) 직원 공개채
+ 용(정규직·기간제) · 강원대학교 산학협력단(춘천)
+DESCRIPTION:기관: 강원대학교 산학협력단(춘천)\n지역: 춘천
+ \n직종: 기타\n학력: 무관\n월급: 월 233만원\n마감시각: 18:
+ 00\n원문: https://www.kangwon.ac.kr/ko/bbs/716/detail.do?pstSn=5226
+URL:https://www.kangwon.ac.kr/ko/bbs/716/detail.do?pstSn=5226
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 강원대학교 산학협력단(춘천) 직원 
+ 공개채용(정규직·기간제)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:a14610c8@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;TZID=Asia/Seoul:20261117T160000
+DTEND;TZID=Asia/Seoul:20261117T170000
+SUMMARY:[마감] 2027학년도 1학기 임상교원 공채(한림대학교 
+ 의료원 전임교원 및 임상교원 초빙) · 한림대학교 춘천
+ 성심병원(한림대학교의료원)
+DESCRIPTION:기관: 한림대학교 춘천성심병원(한림대학교의
+ 료원)\n지역: 춘천\n직종: 강사/교원\n마감시각: 17:00\n원
+ 문: https://recruit.hallym.or.kr/hrt_p20_detail.jsp?locate=1&adoptcnt=002
+ &inggbn=ing&movePage=1&adoptyy=2027&innlist=0&tabdet=
+URL:https://recruit.hallym.or.kr/hrt_p20_detail.jsp?locate=1&adoptcnt=002&i
+ nggbn=ing&movePage=1&adoptyy=2027&innlist=0&tabdet=
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 2027학년도 1학기 임상교원 공채(한림
+ 대학교 의료원 전임교원 및 임상교원 초빙)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:de64bf51@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261117T160000
 DTEND;TZID=Asia/Seoul:20261117T170000
 SUMMARY:[마감] 한림대학교 의료원 전임교원 및 임상교원 
@@ -734,7 +734,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:55ed8ed0@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261118T160000
 DTEND;TZID=Asia/Seoul:20261118T170000
 SUMMARY:[마감] 연세대학교(미래) 교육전문연구원 채용(미
@@ -756,7 +756,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:87cb4ae9@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;VALUE=DATE:20261119
 DTEND;VALUE=DATE:20261120
 SUMMARY:[마감] 기업부설연구소 연구소장 채용 · 주식회사 
@@ -775,7 +775,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:b88cfc9a@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;VALUE=DATE:20261119
 DTEND;VALUE=DATE:20261120
 SUMMARY:[마감] (주)이노스 기업부설연구소 R&D 연구소장을 
@@ -793,7 +793,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:88f880f3@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261120T160000
 DTEND;TZID=Asia/Seoul:20261120T170000
 SUMMARY:[마감] 춘천바이오산업진흥원 채용공고(사업기획 
@@ -812,7 +812,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:d604fd2b@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:[마감] 강원지역 AI 디지털배움터 강사/보조강사 모
@@ -833,7 +833,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:dd466836@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261120T100000
 DTEND;TZID=Asia/Seoul:20261120T110000
 SUMMARY:[마감] 한림대학교 한국영양연구소 박사후 연구원 
@@ -853,7 +853,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:d7c4d1f0@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261121T225900
 DTEND;TZID=Asia/Seoul:20261121T235900
 SUMMARY:[마감] (재)대한자치행정연구원 정규직 채용 · (재)
@@ -873,7 +873,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:f2b25688@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261121T225900
 DTEND;TZID=Asia/Seoul:20261121T235900
 SUMMARY:[마감] [춘천] (주)코빅스 화장품 기업부설연구소 
@@ -892,7 +892,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:3950967c@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261122T220000
 DTEND;TZID=Asia/Seoul:20261122T230000
 SUMMARY:[마감] 슈미트헬스코리아(유) 신약연구 및 제제개
@@ -910,8 +910,29 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:c77cecc3@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;TZID=Asia/Seoul:20261122T225900
+DTEND;TZID=Asia/Seoul:20261122T235900
+SUMMARY:[마감] 한림대학교 AI교육혁신원 교수학습혁신센터
+  연구교수(비전임) 채용 · 한림대학교 AI교육혁신원 교
+ 수학습혁신센터
+DESCRIPTION:기관: 한림대학교 AI교육혁신원 교수학습혁신센
+ 터\n지역: 춘천\n직종: 연구직\n학력: 박사\n월급: 월 350만
+ 원\n마감시각: 23:59\n원문: https://www.hallym.ac.kr/bbs/hallym/151/
+ 392202/artclView.do
+URL:https://www.hallym.ac.kr/bbs/hallym/151/392202/artclView.do
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 한림대학교 AI교육혁신원 교수학습
+ 혁신센터 연구교수(비전임) 채용
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:1d84bdc2@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261125T225900
 DTEND;TZID=Asia/Seoul:20261125T235900
 SUMMARY:[마감] 합성연구센터 연구원 채용공고 · (주)케이
@@ -928,8 +949,30 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:e4cdb07c@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;TZID=Asia/Seoul:20261125T170000
+DTEND;TZID=Asia/Seoul:20261125T180000
+SUMMARY:[마감] 강원특별자치도 지방임기제공무원 - 산림보
+ 호 시간선택제임기제 다급(주35시간) 1명 · 강원특별자
+ 치도(인사위원회 공고)
+DESCRIPTION:기관: 강원특별자치도(인사위원회 공고)\n지역: 
+ 춘천\n직종: 기타\n학력: 무관\n월급: 월 366.6만원\n마감시
+ 각: 18:00\n원문: https://www.gojobs.go.kr/apmView.do?empmnsn=307886&sel
+ MenuNo=400&menuNo=401&upperMenuNo=
+URL:https://www.gojobs.go.kr/apmView.do?empmnsn=307886&selMenuNo=400&menuNo
+ =401&upperMenuNo=
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: 강원특별자치도 지방임기제공무원 -
+  산림보호 시간선택제임기제 다급(주35시간) 1명
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:fbd4d94b@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261125T225900
 DTEND;TZID=Asia/Seoul:20261125T235900
 SUMMARY:[마감] 원주세브란스기독병원 산업통상자원부 산
@@ -949,7 +992,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:17ca6297@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;VALUE=DATE:20261126
 DTEND;VALUE=DATE:20261127
 SUMMARY:[마감] 한림성심대학교 재정지원사업 전담직원 채
@@ -968,7 +1011,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:1f446b92@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261126T225900
 DTEND;TZID=Asia/Seoul:20261126T235900
 SUMMARY:[마감] 나노인텍(주) 기업부설 연구소 연구원 · 나
@@ -987,7 +1030,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:ae44fa05@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261126T225900
 DTEND;TZID=Asia/Seoul:20261126T235900
 SUMMARY:[마감] 기술연구소.R&D 청년채용 · (주)엘에스지
@@ -1004,7 +1047,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:0544cc54@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261127T140000
 DTEND;TZID=Asia/Seoul:20261127T150000
 SUMMARY:[마감] 2027학년도 연세대학교 전임교원 초빙 추가 
@@ -1024,7 +1067,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:1f7dc07b@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261127T170000
 DTEND;TZID=Asia/Seoul:20261127T180000
 SUMMARY:[마감] [비네이처바이오랩] 정부 R&D 과제관리·HR 경
@@ -1046,7 +1089,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:d537698e@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261128T170000
 DTEND;TZID=Asia/Seoul:20261128T180000
 SUMMARY:[마감] 기업부설연구소 의료기기 인허가 연구직 채
@@ -1064,8 +1107,29 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:6a37ca33@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:[마감] [일자리매칭플랫폼] 연구소 회로설계 직원 
+ 모집 · (주)누가의료기
+DESCRIPTION:기관: (주)누가의료기\n지역: 원주\n직종: 연구직
+ \n학력: 전문학사 이상\n원문: https://www.work24.go.kr/wk/a/b/150
+ 0/empDetailAuthView.do?wantedAuthNo=231608&infoTypeCd=KOS&infoTypeGroup=tb
+ _workinfogubun
+URL:https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=
+ 231608&infoTypeCd=KOS&infoTypeGroup=tb_workinfogubun
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: [일자리매칭플랫폼] 연구소 회로설
+ 계 직원 모집
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:f9b885cc@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;VALUE=DATE:20261129
 DTEND;VALUE=DATE:20261130
 SUMMARY:[마감] [일자리매칭플랫폼] 연구소 소프트웨어 직
@@ -1086,7 +1150,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:0ccbfbbc@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261130T225900
 DTEND;TZID=Asia/Seoul:20261130T235900
 SUMMARY:[마감] 원주세브란스기독병원 정신건강의학과 이
@@ -1107,7 +1171,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:05e11e39@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261204T225900
 DTEND;TZID=Asia/Seoul:20261204T235900
 SUMMARY:[마감] 신규 창업된 연세대학교 기술지주회사 자회
@@ -1126,7 +1190,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:ec52951f@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261204T225900
 DTEND;TZID=Asia/Seoul:20261204T235900
 SUMMARY:[마감] 원주세브란스 산학협력단 과제 회계 관리 ·
@@ -1145,7 +1209,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:f3c864ec@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261204T225900
 DTEND;TZID=Asia/Seoul:20261204T235900
 SUMMARY:[마감] 의료기기 제조업 (주)리스템 연구소 전력전
@@ -1164,7 +1228,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:6e397db9@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261206T225900
 DTEND;TZID=Asia/Seoul:20261206T235900
 SUMMARY:[마감] (주)케이투앤 기술연구소 설계연구직 정규
@@ -1183,7 +1247,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:6f1711dc@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:[마감] (주)지오멕스소프트 기술혁신연구소 연구개
@@ -1202,7 +1266,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:b7f5a581@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:[마감] 비티에너지(주) 제품개발 연구원 채용 · 비
@@ -1221,7 +1285,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:d36d6fc0@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;VALUE=DATE:20261206
 DTEND;VALUE=DATE:20261207
 SUMMARY:[마감] [유명주류브랜드기업] 주류·발효·미생물 R&
@@ -1240,8 +1304,46 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:f0edf3f3@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+SUMMARY:[마감] (주) 코닷 개발자 채용 공고 (AI 이미지 처리/
+ 컴퓨터 비전) · (주)코닷
+DESCRIPTION:기관: (주)코닷\n지역: 원주\n직종: 데이터분석\n
+ 학력: 학사 이상\n월급: 월 300만원\n원문: https://www.jobkorea
+ .co.kr/Recruit/GI_Read/50317795
+URL:https://www.jobkorea.co.kr/Recruit/GI_Read/50317795
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: (주) 코닷 개발자 채용 공고 (AI 이미
+ 지 처리/컴퓨터 비전)
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2a58da0d@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;TZID=Asia/Seoul:20261209T225900
+DTEND;TZID=Asia/Seoul:20261209T235900
+SUMMARY:[마감] (재)국가경제연구원 아르바이트 채용 공고 
+ · (재)국가경제연구원
+DESCRIPTION:기관: (재)국가경제연구원\n지역: 춘천\n직종: 기
+ 타\n학력: 학사 이상\n마감시각: 24:00\n원문: https://www.saram
+ in.co.kr/zf_user/jobs/relay/view?rec_idx=55521300
+URL:https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=55521300
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: (재)국가경제연구원 아르바이트 채
+ 용 공고
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:e3f0c111@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20261213T225900
 DTEND;TZID=Asia/Seoul:20261213T235900
 SUMMARY:[마감] (주)지원바이오 기업부설연구소 연구원 채
@@ -1260,7 +1362,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:74275661@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;VALUE=DATE:20261228
 DTEND;VALUE=DATE:20261229
 SUMMARY:[마감] [삼양식품] 스프 개발 연구원 · 삼양식품(주
@@ -1277,8 +1379,27 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:390e4160@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;VALUE=DATE:20270105
+DTEND;VALUE=DATE:20270106
+SUMMARY:[마감] [네오바이오텍] 임플란트개발팀 신입 채용 
+ · (주)네오바이오텍
+DESCRIPTION:기관: (주)네오바이오텍\n지역: 원주\n직종: 연구
+ 직\n학력: 학사 이상\n원문: https://www.saramin.co.kr/zf_user/jobs
+ /relay/view?rec_idx=55508442
+URL:https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=55508442
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: [네오바이오텍] 임플란트개발팀 신
+ 입 채용
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:61a95b32@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;TZID=Asia/Seoul:20270105T225900
 DTEND;TZID=Asia/Seoul:20270105T235900
 SUMMARY:[마감] [(주)에스에이치엘] 기술연구소 채용 공고 ·
@@ -1297,8 +1418,27 @@ TRIGGER:-P1D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:2b9f8f1e@chuncheon-wonju-jobs
+DTSTAMP:20261109T092018Z
+DTSTART;TZID=Asia/Seoul:20270108T225900
+DTEND;TZID=Asia/Seoul:20270108T235900
+SUMMARY:[마감] ㈜이노백 2026년 학/석사급 연구원 채용 · (
+ 주)이노백
+DESCRIPTION:기관: (주)이노백\n지역: 춘천\n직종: 연구직\n학
+ 력: 학사 이상\n마감시각: 24:00\n원문: https://www.saramin.co.kr
+ /zf_user/jobs/relay/view?rec_idx=55516183
+URL:https://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=55516183
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 마감: ㈜이노백 2026년 학/석사급 연구원 채
+ 용
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:de20c4de@chuncheon-wonju-jobs
-DTSTAMP:20261106T091922Z
+DTSTAMP:20261109T092018Z
 DTSTART;VALUE=DATE:20271231
 DTEND;VALUE=DATE:20280101
 SUMMARY:[마감] 강원대학교 빅데이터메디컬융합교육연구단
