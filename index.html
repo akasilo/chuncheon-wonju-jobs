@@ -54,6 +54,7 @@
   --open-wash: #f6f5fe;
   --city-cc: #1d7fbf;
   --city-wj: #b8557e;
+  --city-sc: #a8730f;
   --link: #4557d6;
   --accent: #5266eb; --on-accent: #FFFFFF;
   --accent-tint: rgba(82, 102, 235, .10);
@@ -94,6 +95,7 @@
   --open-wash: #272739;
   --city-cc: #3a95d6;
   --city-wj: #cf6b98;
+  --city-sc: #d29a35;
   --link: #a3b1f7;
   --accent: #5266eb; --on-accent: #FFFFFF;
   --accent-tint: rgba(156, 180, 232, .18);
@@ -200,7 +202,9 @@ body:not([data-view="boards"]) #boards-sheet { display: none; }
 .day.wk { background: var(--week-band); border-radius: 0; }
 .day.wk.first { border-radius: 8px 0 0 8px; } .day.wk.last { border-radius: 0 8px 8px 0; }
 .day .up, .day .dn { width: 100%; display: flex; justify-content: center; }
-.day .up { align-items: flex-end; } .day .dn { align-items: flex-start; }
+.day .up { flex-direction: column; align-items: center; justify-content: flex-end; } .day .dn { align-items: flex-start; }
+.day .up .bar.sc { background: var(--city-sc); margin-bottom: 0; }
+.day .up .bar.sc + .bar { border-radius: 0; }
 .day .bar { width: min(9px, 56%); }
 .day .up .bar { background: var(--city-cc); border-radius: 3px 3px 0 0; margin-bottom: 1px; }
 .day .dn .bar { background: var(--city-wj); border-radius: 0 0 3px 3px; margin-top: 1px; }
@@ -299,7 +303,7 @@ tr.job:hover .ttl { text-decoration: underline; text-decoration-color: var(--rul
 
 .city { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--ink); white-space: nowrap; }
 .city::before { content: ""; width: 7px; height: 7px; border-radius: 2px; background: var(--c); }
-.cc { --c: var(--city-cc); } .wj { --c: var(--city-wj); }
+.cc { --c: var(--city-cc); } .wj { --c: var(--city-wj); } .sc { --c: var(--city-sc); }
 .cell-sm { font-size: 13px; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .jobs td > .cell-sm { display: block; max-width: 100%; }
 
@@ -682,6 +686,7 @@ table.orgt, table.atab { width: 100%; border-collapse: separate; border-spacing:
           <input type="radio" name="city" id="c-all" value="" checked><label for="c-all">전체</label>
           <input type="radio" name="city" id="c-cc" value="춘천"><label for="c-cc"><i style="background:var(--city-cc)"></i>춘천</label>
           <input type="radio" name="city" id="c-wj" value="원주"><label for="c-wj"><i style="background:var(--city-wj)"></i>원주</label>
+          <input type="radio" name="city" id="c-sc" value="삼척"><label for="c-sc"><i style="background:var(--city-sc)"></i>삼척</label>
         </fieldset>
         <button type="button" class="more-btn" id="more-btn" aria-expanded="false" aria-controls="more"><svg class="i"><use href="#i-filter"/></svg>필터<span class="n" id="more-n"></span></button>
         <div class="more" id="more">
@@ -804,6 +809,7 @@ table.orgt, table.atab { width: 100%; border-collapse: separate; border-spacing:
         <div class="checks">
           <label><input type="checkbox" name="pf-city" value="춘천">춘천</label>
           <label><input type="checkbox" name="pf-city" value="원주">원주</label>
+          <label><input type="checkbox" name="pf-city" value="삼척">삼척</label>
         </div>
       </fieldset>
     </div>
@@ -909,13 +915,15 @@ const catOf = j => j.category || "기타";
 // 박사 수료는 요건 비교에서 석사로 본다
 const DEG_RANK = { "박사": 5, "박사 수료": 4, "석사": 4, "학사": 3, "전문학사": 2, "고졸": 1 };
 const REQ_LABEL = { 5: "박사", 4: "석사 이상", 3: "학사 이상", 2: "전문학사 이상", 1: "고졸 이상", 0: "무관" };
+const CITIES = ["춘천", "원주", "삼척"];
+const cityClass = c => c === "원주" ? "wj" : c === "삼척" ? "sc" : "cc";
 function cleanProfile(p) {
   if (!p || typeof p !== "object") return null;
   const out = {
     degree: DEG_RANK[p.degree] ? p.degree : "",
     keywords: (Array.isArray(p.keywords) ? p.keywords : []).map(s => String(s).trim()).filter(Boolean).slice(0, 20),
     years: typeof p.years === "number" && p.years >= 0 ? p.years : null,
-    cities: (Array.isArray(p.cities) ? p.cities : []).filter(c => c === "춘천" || c === "원주"),
+    cities: (Array.isArray(p.cities) ? p.cities : []).filter(c => CITIES.includes(c)),
   };
   return out.degree || out.keywords.length || out.years != null || out.cities.length ? out : null;
 }
@@ -1021,8 +1029,8 @@ function renderLead() {
   $("#lead-h").textContent = s;
 
   const hiddenEtc = st.etc ? 0 : DATA.jobs.filter(j => isOpen(j) && catOf(j) === "기타").length;
-  const cc = pool.filter(j => j.city === "춘천").length, wj = pool.filter(j => j.city === "원주").length;
-  $("#lead-sub").innerHTML = `<span>춘천 ${cc}건, 원주 ${wj}건</span>`
+  const cc = pool.filter(j => j.city === "춘천").length, wj = pool.filter(j => j.city === "원주").length, sc = pool.filter(j => j.city === "삼척").length;
+  $("#lead-sub").innerHTML = `<span>춘천 ${cc}건, 원주 ${wj}건${sc ? `, 삼척 ${sc}건` : ""}</span>`
     + (fresh ? `<span>새 공고 ${fresh}건</span>` : "")
     + (hiddenEtc ? `<span>행정·기타 ${hiddenEtc}건은 숨겼어요 <button type="button" id="show-etc">보기</button></span>` : "")
     + (!profile && !store.get("profileHint", false) ? `<span class="hint">학력·경력을 넣으면 지원할 수 있는 공고를 표시해요 <button type="button" data-act="profile">내 조건 넣기</button><button type="button" data-act="hint-off">닫기</button></span>` : "");
@@ -1051,22 +1059,24 @@ function renderRidge(list) {
     const d = dday(j.deadline);
     if (d === null) { undated++; return; }
     if (d >= RIDGE_DAYS) { later++; return; }
-    const c = cnt[j.deadline] ||= { cc: 0, wj: 0 };
-    j.city === "원주" ? c.wj++ : c.cc++;
+    const c = cnt[j.deadline] ||= { cc: 0, wj: 0, sc: 0 };
+    c[cityClass(j.city)]++;
   });
-  const max = Math.max(3, ...Object.values(cnt).flatMap(c => [c.cc, c.wj]));
+  const anySc = Object.values(cnt).some(c => c.sc);
+  // 위쪽 막대는 춘천 + 삼척(위에 쌓음), 아래쪽은 원주
+  const max = Math.max(3, ...Object.values(cnt).flatMap(c => [c.cc + c.sc, c.wj]));
   const h = n => n ? Math.max(3, Math.round(n / max * 32)) : 0;
   el.hidden = false;
-  el.innerHTML = `<div class="legend" aria-hidden="true"><span><i style="background:var(--city-cc)"></i>춘천</span><span><i style="background:var(--city-wj)"></i>원주</span></div>
+  el.innerHTML = `<div class="legend" aria-hidden="true"><span><i style="background:var(--city-cc)"></i>춘천</span><span><i style="background:var(--city-wj)"></i>원주</span>${anySc ? `<span><i style="background:var(--city-sc)"></i>삼척</span>` : ""}</div>
     <div class="days" style="--n:${RIDGE_DAYS}" role="group" aria-label="마감일별 공고 수, 날짜를 누르면 그날 마감 공고만 보여요">
     ${days.map((iso, i) => {
-      const c = cnt[iso] || { cc: 0, wj: 0 }, dt = toDate(iso), tot = c.cc + c.wj;
+      const c = cnt[iso] || { cc: 0, wj: 0, sc: 0 }, dt = toDate(iso), tot = c.cc + c.wj + c.sc;
       // 라벨은 오늘과 7일 간격만 (월초 라벨을 따로 넣으면 이웃 라벨과 겹친다)
       const lab = i === 0 ? "오늘" : i % 7 === 0 ? `${dt.getMonth() + 1}.${dt.getDate()}` : "";
       const wk = i <= 7 ? ` wk${i === 0 ? " first" : ""}${i === 7 ? " last" : ""}` : "";
-      const name = `${dt.getMonth() + 1}월 ${dt.getDate()}일(${WD[dt.getDay()]}) 마감 ${tot}건` + (tot ? `, 춘천 ${c.cc} 원주 ${c.wj}` : "");
+      const name = `${dt.getMonth() + 1}월 ${dt.getDate()}일(${WD[dt.getDay()]}) 마감 ${tot}건` + (tot ? `, 춘천 ${c.cc} 원주 ${c.wj}` + (c.sc ? ` 삼척 ${c.sc}` : "") : "");
       return `<button type="button" class="day${wk}" data-day="${iso}" aria-pressed="${st.day === iso}" aria-label="${name}" data-tip="${name}" ${tot ? "" : "disabled"}>
-        <span class="up">${c.cc ? `<span class="bar" style="height:${h(c.cc)}px"></span>` : ""}</span><span class="axis"></span>
+        <span class="up">${c.sc ? `<span class="bar sc" style="height:${h(c.sc)}px"></span>` : ""}${c.cc ? `<span class="bar" style="height:${h(c.cc)}px"></span>` : ""}</span><span class="axis"></span>
         <span class="dn">${c.wj ? `<span class="bar" style="height:${h(c.wj)}px"></span>` : ""}</span><span class="lab">${lab}</span></button>`;
     }).join("")}
     <span aria-hidden="true"></span>
@@ -1149,7 +1159,7 @@ function shortTitle(j) {
 }
 function rowHTML(j) {
   const d = det(j), k = keyOf(j), on = !!starred[k], open = st.open === j.id, p = payInfo(j);
-  const cityCls = j.city === "원주" ? "wj" : "cc";
+  const cityCls = cityClass(j.city);
   const payHTML = p.monthly != null
     ? `<span class="pay">${esc(p.label)}${p.sub ? `<span class="pay-sub">${esc(p.sub)}</span>` : ""}</span>`
     : `<span class="pay none">${p.label}</span>`;
@@ -1285,7 +1295,7 @@ function renderTable(list) {
 
 /* ---------- boards ---------- */
 const B_GROUPS = ["대학", "병원", "연구소·진흥원", "정부·지자체", "공공 포털", "민간 포털"];
-const B_CITIES = ["춘천", "원주", "공통"];
+const B_CITIES = ["춘천", "원주", "삼척", "공통"];
 function boardGroup(b) {
   const n = b.name || "";
   if (/^(사람인|인크루트|잡코리아|고용24|피플앤잡|하이브레인넷)/.test(n)) return "민간 포털";
@@ -1299,6 +1309,7 @@ function boardGroup(b) {
 function boardCity(b) {
   const n = b.name || "", u = b.url || "";
   if (/춘천/.test(n) && /원주/.test(n)) return "공통";
+  if (/삼척|도계/.test(n)) return "삼척";
   if (/원주|연세|세브란스|상지|한라|경동|국립과학수사|지방행정|wmit|ywmc|kwmc/.test(n + u)) return "원주";
   if (/춘천|강원대|한림|송곡|강원연구원|테크노파크|정보문화|경제진흥원|감염병|창조경제|기초과학/.test(n)) return "춘천";
   return "공통";
@@ -1310,12 +1321,15 @@ function renderBoards() {
   const checked = list.filter(b => boardChecked[b.url] === TODAY).length;
   $("#boards-sub").textContent = `${list.length}곳 중 오늘 ${checked}곳 확인`;
   const short = n => n.replace(/\((?:구|재)[^)]*\)/g, "").replace(/\s*\([^)]{15,}\)\s*$/, "").trim();
-  $("#boards-grid").innerHTML = `<div class="bgrid"><span class="colh"></span>${B_CITIES.map(c => `<span class="colh">${c}</span>`).join("")}
+  // 삼척 열은 삼척 게시판이 있을 때만
+  const cols = B_CITIES.filter(c => c !== "삼척" || list.some(b => boardCity(b) === "삼척"));
+  const gridStyle = cols.length > 3 ? ` style="grid-template-columns: 128px repeat(${cols.length - 1}, minmax(0, 1fr)) minmax(0, 1.6fr)"` : "";
+  $("#boards-grid").innerHTML = `<div class="bgrid"${gridStyle}><span class="colh"></span>${cols.map(c => `<span class="colh">${c}</span>`).join("")}
     ${B_GROUPS.filter(k => g[k]).map(k => {
-      const n = B_CITIES.reduce((s, c) => s + (g[k][c] || []).length, 0);
-      const done = B_CITIES.reduce((s, c) => s + (g[k][c] || []).filter(b => boardChecked[b.url] === TODAY).length, 0);
+      const n = cols.reduce((s, c) => s + (g[k][c] || []).length, 0);
+      const done = cols.reduce((s, c) => s + (g[k][c] || []).filter(b => boardChecked[b.url] === TODAY).length, 0);
       return `<div class="bgroup"><h3>${k}<span>${n}곳${done ? `, ${done}곳 확인` : ""}</span></h3>
-        ${B_CITIES.map(c => {
+        ${cols.map(c => {
           const items = g[k][c] || [];
           if (!items.length) return `<ul class="blist emp"><li class="none" aria-hidden="true">—</li></ul>`;
           return `<ul class="blist" aria-label="${k} ${c}"><li class="ch">${c}</li>${items.map(b => {
@@ -1528,6 +1542,7 @@ function renderArchive() {
           <input type="radio" name="acity" id="ac-all" value="" checked><label for="ac-all">전체</label>
           <input type="radio" name="acity" id="ac-cc" value="춘천"><label for="ac-cc"><i style="background:var(--city-cc)"></i>춘천</label>
           <input type="radio" name="acity" id="ac-wj" value="원주"><label for="ac-wj"><i style="background:var(--city-wj)"></i>원주</label>
+          <input type="radio" name="acity" id="ac-sc" value="삼척"><label for="ac-sc"><i style="background:var(--city-sc)"></i>삼척</label>
         </fieldset>
         <div class="search">
           <label class="vh" for="a-q">지난 공고 검색</label>
@@ -1603,7 +1618,7 @@ function renderArchList() {
     <tbody>${shown.map(a => `<tr>
       <td class="a-due"><span class="d">${isoDate(a.closed_on) ? md(a.closed_on) : "—"}${isoDate(a.closed_on) && a.closed_on.slice(0, 4) !== yr ? `<small>${a.closed_on.slice(0, 4)}</small>` : ""}</span></td>
       <td class="a-t"><div class="t" title="${esc(a.title)}">${esc(shortTitle(a))}</div><div class="o">${esc(a.org)}</div></td>
-      <td class="a-city"><span class="city ${a.city === "원주" ? "wj" : "cc"}">${esc(a.city || "")}</span></td>
+      <td class="a-city"><span class="city ${cityClass(a.city)}">${esc(a.city || "")}</span></td>
       <td class="a-edu">${eduPill(a)}</td>
       <td class="a-src">${a.url ? `<a href="${esc(a.url)}" target="_blank" rel="noopener" aria-label="원문 공고 열기, 새 창">원문${icon("i-ext")}</a>` : `<span class="dash">—</span>`}</td>
     </tr>`).join("")}
